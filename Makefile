@@ -21,9 +21,30 @@ bootstrap:
 	    nixos-generate-config --root /mnt; \
 	    sed --in-place '/system\.stateVersion = .*/a \
 		  nix.settings.experimental-features = [ \"nix-command\" \"flakes\" ]; \
+		  networking.hostName = \"dev\"; \
 		  services.openssh.enable = true; \
 		  services.openssh.settings.PermitRootLogin = \"yes\"; \
 		  users.users.root.openssh.authorizedKeys.keys = [ \"$(shell cat ~/.ssh/id_ed25519.pub)\" ]; \
 	    ' /mnt/etc/nixos/configuration.nix; \
 	    nixos-install --no-root-passwd && shutdown now; \
 	  "
+
+copy:
+	rsync \
+	  --archive \
+	  --verbose \
+	  --rsh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
+	  --exclude='.git/' \
+	  . root@$(HOST):/etc/nixos
+
+configure: copy
+	ssh \
+	  -o StrictHostKeyChecking=no \
+	  -o UserKnownHostsFile=/dev/null \
+	  root@$(HOST) "nixos-rebuild switch --flake '/etc/nixos#dev'; reboot"
+
+test:
+	sudo nixos-rebuild test
+
+switch:
+	sudo nixos-rebuild switch
