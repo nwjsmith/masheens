@@ -27,6 +27,13 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [ neovim git ];
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    MANPAGER = "nvim +Man!";
+  };
+
   users = {
     mutableUsers = false;
 
