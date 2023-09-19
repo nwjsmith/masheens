@@ -21,6 +21,7 @@ bootstrap:
 	    nixos-generate-config --root /mnt; \
 	    sed --in-place '/system\.stateVersion = .*/a \
 		  nix.settings.experimental-features = [ \"nix-command\" \"flakes\" ]; \
+		  environment.systemPackages = with pkgs; [ git ]; \
 		  networking.hostName = \"dev-vm\"; \
 		  services.openssh.enable = true; \
 		  services.openssh.settings.PermitRootLogin = \"yes\"; \
