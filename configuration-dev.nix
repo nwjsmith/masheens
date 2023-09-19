@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware-configuration-dev.nix
   ];
 
   boot.loader = {
@@ -42,6 +42,7 @@
     MANPAGER = "nvim +Man!";
   };
 
+  programs.zsh.enable = true;
   users = {
     mutableUsers = false;
 
@@ -50,7 +51,7 @@
       description = "Nate Smith";
       home = "/home/nwjsmith";
       extraGroups = ["networkmanager" "wheel"];
-      hashedPassword = "$6$PUhJVThTRYeN3KJP$Bz6iTc4rbVAQmFGCX9ou15JXqG8IlEpVTjyEMRPhn3ALJ6uIPzgCj7.RY3L1fC3ZZwM97UTUYzER/vSiAzUm6.";
+      hashedPassword = "$y$j9T$aJNKS3JG64FqRJKIWTq5f1$OfZVU/eVlqrU/O4XMZo/G9OocZtZGZ1ddd7Tg5HSwUB";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtWR1nXAvSmsd92TC9rMuZIh1Ec8cqxYr3BIyUxdNyy"
       ];
@@ -69,9 +70,9 @@
     settings.default_session.command = ''
       ${pkgs.greetd.tuigreet}/bin/tuigreet \
         --time \
-	--asterisks \
-	--user-menu \
-	--cmd sway
+        --asterisks \
+        --user-menu \
+        --cmd sway
     '';
   };
 
@@ -86,5 +87,5 @@
   programs.sway.enable = true;
   hardware.opengl.enable = true;
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "22.11";
 }
