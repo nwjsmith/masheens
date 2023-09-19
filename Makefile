@@ -30,12 +30,10 @@ bootstrap:
 	  "
 
 copy:
-	rsync \
-	  --archive \
-	  --verbose \
-	  --rsh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
-	  --exclude='.git/' \
-	  . root@$(HOST):/etc/nixos
+	ssh \
+	  -o StrictHostKeyChecking=no \
+	  -o UserKnownHostsFile=/dev/null \
+	  root@$(HOST) "rm -rf /etc/nixos; git clone https://github.com/nwjsmith/masheens.git /etc/nixos"
 
 configure: copy
 	ssh \
