@@ -21,7 +21,7 @@ bootstrap:
 	    nixos-generate-config --root /mnt; \
 	    sed --in-place '/system\.stateVersion = .*/a \
 		  nix.settings.experimental-features = [ \"nix-command\" \"flakes\" ]; \
-		  networking.hostName = \"dev\"; \
+		  networking.hostName = \"dev-vm\"; \
 		  services.openssh.enable = true; \
 		  services.openssh.settings.PermitRootLogin = \"yes\"; \
 		  users.users.root.openssh.authorizedKeys.keys = [ \"$(shell cat ~/.ssh/id_ed25519.pub)\" ]; \
@@ -41,7 +41,7 @@ configure: copy
 	ssh \
 	  -o StrictHostKeyChecking=no \
 	  -o UserKnownHostsFile=/dev/null \
-	  root@$(HOST) "nixos-rebuild switch --flake '/etc/nixos#dev'; reboot"
+	  root@$(HOST) "nixos-rebuild switch --flake '/etc/nixos#dev-vm'; reboot"
 
 test:
 	sudo nixos-rebuild test
