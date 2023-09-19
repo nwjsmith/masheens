@@ -12,10 +12,6 @@
       enable = true;
       configurationLimit = 8;
     };
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
   };
 
   networking.networkmanager.enable = true;
