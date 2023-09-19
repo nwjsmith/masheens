@@ -42,6 +42,7 @@
     MANPAGER = "nvim +Man!";
   };
 
+  programs.zsh.enable = true;
   users = {
     mutableUsers = false;
 
