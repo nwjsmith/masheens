@@ -1,0 +1,3 @@
+{:hover {:clojuredocs false}
+ :cljfmt {:indents {for-all [[:block 1]]
+                    checking [[:block 1]]}}}
