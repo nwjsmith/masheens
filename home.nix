@@ -6,9 +6,10 @@
 
   home.packages = with pkgs; [
     _1password-gui
-    emacs-all-the-icons-fonts
     fd
     ibm-plex
+    inter
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     nodejs-slim
     pandoc
     racket
