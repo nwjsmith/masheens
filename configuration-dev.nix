@@ -20,6 +20,7 @@
 
   networking.networkmanager.enable = true;
   networking.hostName = "dev";
+  services.tailscale.enable = true;
 
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
