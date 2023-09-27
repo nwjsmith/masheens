@@ -16,7 +16,12 @@
 
   networking.networkmanager.enable = true;
   networking.hostName = "dev-vm";
-  services.tailscale.enable = true;
+  services.tailscale.enable = {
+    enable = true;
+    extraUpFlags = [
+      "--ssh"
+    ];
+  };
 
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
