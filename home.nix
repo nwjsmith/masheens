@@ -23,7 +23,12 @@
 
     config = {
       modifier = "Mod4";
-      output."Virtual-1".mode = "3840x2160@60.00";
+      output = {
+        Virtual-1 = {
+          mode = "3840x2160";
+          scale = 2;
+        };
+      };
     };
   };
 
