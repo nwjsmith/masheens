@@ -23,6 +23,7 @@
         config = builtins.readFile ./config/nvim/after/plugin/conjure.lua;
       }
       copilot-vim
+      mini-nvim
       {
         plugin = nvim-lspconfig;
         type = "lua";

@@ -4,7 +4,7 @@
   home.stateVersion = "22.05";
 
   imports =
-    [ ./alacritty.nix ./clojure.nix ./git.nix ./gpg.nix ./kitty.nix ./neovim.nix ./zsh.nix ];
+    [ ./clojure.nix ./git.nix ./gpg.nix ./kitty.nix ./neovim.nix ./zsh.nix ];
 
   home.packages = with pkgs; [
     amazon-ecr-credential-helper
