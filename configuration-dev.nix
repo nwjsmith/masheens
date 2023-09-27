@@ -20,7 +20,7 @@
 
   networking.networkmanager.enable = true;
   networking.hostName = "dev";
-  services.tailscale.enable = {
+  services.tailscale = {
     enable = true;
     extraUpFlags = [
       "--ssh"
