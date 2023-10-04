@@ -99,7 +99,10 @@
       "amethyst"
       "balenaetcher"
       "bartender"
-      "chromium"
+      {
+        name = "chromium";
+        args.no_quarantine = true;
+      }
       "cleanshot"
       "dash"
       "deckset"
@@ -110,7 +113,6 @@
       "grammarly"
       "hey"
       "intellij-idea"
-      "kindle"
       "monodraw"
       "notion"
       "obs"
@@ -134,7 +136,9 @@
     ];
     masApps = {
       "Flow" = 1423210932;
-      "Grammarly for Safari" = 1462114288;
+      "Ivory" = 6444602274;
+      "1Password for Safari" = 1569813296;
+      "Kindle" = 302584613;
       "Things" = 904280696;
     };
   };
