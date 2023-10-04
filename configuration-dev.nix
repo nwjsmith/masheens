@@ -90,8 +90,14 @@
   nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.enable = true;
 
-  programs.sway.enable = true;
   hardware.opengl.enable = true;
+  fonts = {
+    fontconfig = {
+      enable = true;
+      antialias = true;
+      hinting.enable = false;
+    };
+  };
 
   system.stateVersion = "22.11";
 }

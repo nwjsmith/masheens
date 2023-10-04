@@ -16,13 +16,17 @@
     ripgrep
     shellcheck
     sqlite
+    tofi
   ];
 
   wayland.windowManager.sway = {
     enable = true;
+    wrapperFeatures.gtk = true;
 
     config = {
       modifier = "Mod4";
+      output."LG Electronics LG HDR 4K 0x00005F34".scale = "2";
+      menu = "tofi-drun";
     };
   };
 
