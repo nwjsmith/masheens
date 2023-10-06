@@ -41,7 +41,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ neovim git ];
+  environment.systemPackages = with pkgs; [ ibm-plex neovim git ];
   environment.variables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
@@ -91,12 +91,15 @@
   hardware.pulseaudio.enable = true;
 
   hardware.opengl.enable = true;
-  fonts = {
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      hinting.enable = false;
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "IBM Plex Mono" ];
+      sansSerif = [ "IBM Plex Sans" ];
+      serif = [ "IBM Plex Serif" ];
     };
+    hinting.enable = false;
   };
 
   system.stateVersion = "22.11";

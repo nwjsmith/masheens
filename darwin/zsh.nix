@@ -2,6 +2,7 @@
 
 {
   programs.direnv.enable = true;
+
   programs.zsh = {
     defaultKeymap = "viins";
     enable = true;
@@ -10,6 +11,7 @@
     initExtra = builtins.readFile ./zshrc;
     syntaxHighlighting.enable = true;
   };
+
   programs.zoxide.enable = true;
   home.sessionVariables = {
     PAGER = "less -FR";
