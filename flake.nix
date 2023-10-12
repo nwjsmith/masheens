@@ -25,7 +25,7 @@
       forAllSystems = forSystems [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       makeSystem =
         { system
-	, host
+        , host
         , user
         , home
         }:
@@ -46,6 +46,7 @@
             {
               imports = [
                 ./${host}/hardware-configuration.nix
+                ./common/configuration.nix
                 ./${os}/configuration.nix
                 ./${host}/configuration.nix
               ];
@@ -56,7 +57,13 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.${user} = import ./${host}/home-configuration.nix;
+                users.${user} = ({ ... }: {
+                  imports = [
+                    ./common/home-configuration.nix
+                    ./${os}/home-configuration.nix
+                    ./${host}/home-configuration.nix
+                  ];
+                });
               };
             }
           ];

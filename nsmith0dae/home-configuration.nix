@@ -4,48 +4,21 @@
   home.stateVersion = "22.05";
 
   imports =
-    [ ./clojure.nix ./git.nix ./gpg.nix ./kitty.nix ./neovim.nix ./zsh.nix ];
+    [ ./git.nix ./gpg.nix ./kitty.nix ./neovim.nix ./zsh.nix ];
 
   home.packages = with pkgs; [
     amazon-ecr-credential-helper
     colima
-    asciinema
     awscli2
-    curl
     d2
     docker-client
     docker-compose
     docker-credential-helpers
-    fd
-    ffmpeg
-    gh
-    jq
     nodePackages.mermaid-cli
-    niv
-    nodejs
-    (ripgrep.override { withPCRE2 = true; })
-    scc
-    sqlite
-    tmux
     yt-dlp
-
-    # Doom Emacs stuff
-    coreutils
-    discount
-    editorconfig-core-c
-    fontconfig
-    gnuplot
-    pandoc
-    (tree-sitter.withPlugins (_: tree-sitter.allGrammars))
   ];
 
   programs.emacs.package = pkgs.emacs29-macport;
-  programs.emacs = {
-    enable = true;
-    extraPackages = (epkgs: [ epkgs.vterm ]);
-  };
-
-  programs.home-manager.enable = true;
 
   home.file.".local/bin/tarsnap-backup" = {
     executable = true;
@@ -56,8 +29,6 @@
         ${config.home.homeDirectory}/Documents/org
     '';
   };
-
-  home.sessionPath = [ "${config.home.homeDirectory}/.emacs.d/bin" ];
 
   home.activation = {
     installDoom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -73,7 +44,6 @@
   home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
   home.file.".emacs.d/profiles.el".source = ./emacs.d/profiles.el;
 
-  xdg.configFile."shellcheckrc".source = ./shellcheckrc;
   xdg.configFile."karabiner/assets/complex_modifications/escape.json".source =
     ./config/karabiner/assets/complex_modifications/escape.json;
 }

@@ -7,16 +7,10 @@
 
   home.packages = with pkgs; [
     _1password-gui
-    fd
     ibm-plex
     inter
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    nodejs-slim
-    pandoc
     racket
-    ripgrep
-    shellcheck
-    sqlite
     tofi
   ];
 
@@ -142,11 +136,7 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-pgtk;
-    extraPackages = (epkgs: with epkgs; [ vterm ]);
-  };
+  programs.emacs.package = pkgs.emacs29-pgtk;
 
   programs.fzf = {
     enable = true;
