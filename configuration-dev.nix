@@ -41,6 +41,14 @@
     };
   };
 
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = ["*"];
+      settings.main.capslock = "overload(control, esc)";
+    };
+  };
+
   environment.systemPackages = with pkgs; [ ibm-plex neovim git ];
   environment.variables = {
     EDITOR = "nvim";
