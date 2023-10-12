@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+
+  imports = [
+    ./clojure.nix
+  ];
+
   home.packages = with pkgs; [
     asciinema
     coreutils
