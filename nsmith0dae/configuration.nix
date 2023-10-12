@@ -29,7 +29,6 @@
   };
 
   environment = {
-    darwinConfig = "$HOME/.dotfiles/darwin.nix";
     systemPackages = with pkgs; [ kitty terminal-notifier ];
     shells = with pkgs; [ bashInteractive zsh ];
     variables = {

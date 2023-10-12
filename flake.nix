@@ -2,53 +2,61 @@
   description = "Nate Smith's Nix configurations";
 
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
     { self
-    , nixpkgs-unstable
-    , nixos-unstable
+    , nixpkgs
     , nix-darwin
     , home-manager
     }:
     let
-      forSystems = systems: f: nixpkgs-unstable.lib.genAttrs systems (system: f rec {
+      lib = nixpkgs.lib;
+      forSystems = systems: f: lib.genAttrs systems (system: f rec {
         inherit system;
-        pkgs = import nixpkgs-unstable { inherit system; };
+        pkgs = import nixpkgs { inherit system; };
       });
       forAllSystems = forSystems [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       makeSystem =
-        { osSystem
-        , system
-        , cm
-        , hm
+        { system
+	, host
         , user
         , home
-        , hm-config
-        }: osSystem {
+        }:
+        let
+          os = lib.lists.last (lib.strings.splitString "-" system);
+          osSystem = if os == "linux" then lib.nixosSystem else nix-darwin.lib.darwinSystem;
+          hm = if os == "linux" then home-manager.nixosModules.home-manager else home-manager.darwinModules.home-manager;
+        in
+        osSystem {
           inherit system;
 
-          pkgs = import nixpkgs-unstable {
+          pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
 
           modules = [
-            cm
+            {
+              imports = [
+                ./${host}/hardware-configuration.nix
+                ./${os}/configuration.nix
+                ./${host}/configuration.nix
+              ];
+            }
             hm
             {
               users.users.${user}.home = home;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.nwjsmith = import hm-config;
+                users.${user} = import ./${host}/home-configuration.nix;
               };
             }
           ];
@@ -56,32 +64,24 @@
     in
     {
       nixosConfigurations.dev = makeSystem {
-        osSystem = nixos-unstable.lib.nixosSystem;
         system = "x86_64-linux";
-        cm = ./configuration-dev.nix;
-        hm = home-manager.nixosModules.home-manager;
+        host = "dev";
         user = "nwjsmith";
         home = "/home/nwjsmith";
-        hm-config = ./home.nix;
       };
 
       nixosConfigurations.dev-vm = makeSystem {
-        osSystem = nixos-unstable.lib.nixosSystem;
         system = "aarch64-linux";
-        cm = ./configuration-dev-vm.nix;
-        hm = home-manager.nixosModules.home-manager;
+        host = "dev-vm";
         user = "nwjsmith";
         home = "/home/nwjsmith";
-        hm-config = ./home.nix;
       };
 
       darwinConfigurations.nsmith0dae = makeSystem {
-        osSystem = nix-darwin.lib.darwinSystem;
         system = "aarch64-darwin";
-        hm = home-manager.darwinModules.home-manager;
+        host = "nsmith0dae";
         user = "nsmith";
         home = "/Users/nsmith";
-        hm-config = ./darwin/home.nix;
       };
 
       devShells = forAllSystems ({ system, pkgs, ... }:
