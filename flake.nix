@@ -2,26 +2,24 @@
   description = "Nate Smith's Nix configurations";
 
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
     { self
-    , nixpkgs-unstable
-    , nixos-unstable
+    , nixpkgs
     , nix-darwin
     , home-manager
     }:
     let
-      forSystems = systems: f: nixpkgs-unstable.lib.genAttrs systems (system: f rec {
+      forSystems = systems: f: nixpkgs.lib.genAttrs systems (system: f rec {
         inherit system;
-        pkgs = import nixpkgs-unstable { inherit system; };
+        pkgs = import nixpkgs { inherit system; };
       });
       forAllSystems = forSystems [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       makeSystem =
@@ -35,7 +33,7 @@
         }: osSystem {
           inherit system;
 
-          pkgs = import nixpkgs-unstable {
+          pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
@@ -56,7 +54,7 @@
     in
     {
       nixosConfigurations.dev = makeSystem {
-        osSystem = nixos-unstable.lib.nixosSystem;
+        osSystem = nixpkgs.lib.nixosSystem;
         system = "x86_64-linux";
         cm = ./configuration-dev.nix;
         hm = home-manager.nixosModules.home-manager;
@@ -66,7 +64,7 @@
       };
 
       nixosConfigurations.dev-vm = makeSystem {
-        osSystem = nixos-unstable.lib.nixosSystem;
+        osSystem = nixpkgs.lib.nixosSystem;
         system = "aarch64-linux";
         cm = ./configuration-dev-vm.nix;
         hm = home-manager.nixosModules.home-manager;

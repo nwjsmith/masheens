@@ -8,43 +8,10 @@
 
   home.packages = with pkgs; [
     amazon-ecr-credential-helper
-    asciinema
-    awscli2
     colima
-    curl
-    d2
-    docker-client
-    docker-compose
-    docker-credential-helpers
-    fd
-    ffmpeg
-    gh
-    jq
-    nodePackages.mermaid-cli
-    niv
-    nodejs
-    (ripgrep.override { withPCRE2 = true; })
-    scc
-    sqlite
-    tarsnap
-    tmux
-    yt-dlp
-
-    # Doom Emacs stuff
-    coreutils
-    discount
-    editorconfig-core-c
-    fontconfig
-    gnuplot
-    pandoc
-    (tree-sitter.withPlugins (_: tree-sitter.allGrammars))
   ];
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-macport;
-    extraPackages = (epkgs: [ epkgs.vterm ]);
-  };
+  programs.emacs.package = pkgs.emacs29-macport;
 
   programs.home-manager.enable = true;
 
@@ -67,16 +34,13 @@
         $DRY_RUN_CMD ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs.git $DOOM
     '';
   };
+
   home.file.".doom.d/init.el".source = ./doom.d/init.el;
   home.file.".doom.d/packages.el".source = ./doom.d/packages.el;
   home.file.".doom.d/config.el".source = ./doom.d/config.el;
   home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
   home.file.".emacs.d/profiles.el".source = ./emacs.d/profiles.el;
 
-  xdg.configFile = {
-    "shellcheckrc".source = ./shellcheckrc;
-
-    "karabiner/assets/complex_modifications/escape.json".source =
-      ./config/karabiner/assets/complex_modifications/escape.json;
-  };
+  xdg.configFile."karabiner/assets/complex_modifications/escape.json".source =
+    ./config/karabiner/assets/complex_modifications/escape.json;
 }
