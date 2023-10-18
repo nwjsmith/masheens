@@ -15,7 +15,7 @@ For setting up a Virtual Machine using Masheens, follow these steps:
 1. **Install UTM:** Start by installing the UTM application on your macOS system. You can get it from the official UTM website or via Homebrew using the command: `brew install --cask utm`.
 2. **Download NixOS installer ISO:** Download the NixOS installer ISO from the official NixOS website.
 3. **Create a Virtual Machine:** Using the UTM application, create a new virtual machine. While setting up the VM, make sure to add the NixOS installer ISO to the CD/DVD images. Also, enable the Hardware OpenGL Acceleration under the Display settings.
-4. **Start the Virtual Machine:** After you have created the VM, start it up. 
+4. **Start the Virtual Machine:** After you have created the VM, start it up.
 5. **Clone the Masheens repository:** Clone the Masheens repository to your local system using the command: `git clone https://github.com/nwjsmith/masheens.git`
 6. **Set `root` password to `root`:** In the VM, run `sudo passwd` and set it to `root`
 7. **Find IP address of VM:** In the VM, run `ifconfig` and note the IP address of the VM, it usually starts with `192.168.`.
@@ -28,8 +28,8 @@ Remember to regularly pull updates from the Masheens repository and run the Make
 
 To use Masheens, you will need:
 
-- *For NixOS in a VM on macOS*: UTM is used for running VMs.
-- *For macOS Nix configurations*: You'll need to install Nix using [Determinate Systems' installer](https://github.com/DeterminateSystems/nix-installer).
+- _For NixOS in a VM on macOS_: UTM is used for running VMs.
+- _For macOS Nix configurations_: You'll need to install Nix using [Determinate Systems' installer](https://github.com/DeterminateSystems/nix-installer).
 
 ## Contact
 

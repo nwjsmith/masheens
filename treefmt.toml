@@ -1,0 +1,43 @@
+[formatter.nix]
+command = "nixpkgs-fmt"
+includes = ["*.nix"]
+
+[formatter.shell]
+command = "sh"
+options = [
+    "-eucx",
+    """
+# First shellcheck
+shellcheck --external-sources --source-path=SCRIPTDIR "$@"
+# Then format
+shfmt -i 2 -s -w "$@"
+    """,
+    "--", # bash swallows the second argument when using -c
+]
+includes = ["*.sh"]
+excludes = []
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = [
+    "*.css",
+    "*.html",
+    "*.js",
+    "*.json",
+    "*.jsx",
+    "*.md",
+    "*.mdx",
+    "*.scss",
+    "*.ts",
+]
+
+[formatter.clojure]
+command = "sh"
+options = [
+  "-euc",
+  """
+  clj-kondo --lint "$@"
+"""
+]
+includes = ["*.clj", "*.cljs", "*.cljc", "*.edn"]

@@ -19,7 +19,7 @@
 
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.openssh = {
     enable = true;
@@ -32,7 +32,7 @@
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = ["*"];
+      ids = [ "*" ];
       settings.main.capslock = "overload(control, esc)";
     };
   };
@@ -51,7 +51,7 @@
       isNormalUser = true;
       description = "Nate Smith";
       home = "/home/nwjsmith";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = [ "networkmanager" "wheel" ];
       hashedPassword = "$y$j9T$aJNKS3JG64FqRJKIWTq5f1$OfZVU/eVlqrU/O4XMZo/G9OocZtZGZ1ddd7Tg5HSwUB";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtWR1nXAvSmsd92TC9rMuZIh1Ec8cqxYr3BIyUxdNyy"

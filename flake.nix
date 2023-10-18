@@ -96,6 +96,10 @@
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               nixpkgs-fmt
+              treefmt
+              nodePackages.prettier
+              clj-kondo
+              shellcheck
             ];
           };
         });

@@ -4,7 +4,6 @@
   # Have nix-darwin manage the Nix daemon
   services.nix-daemon.enable = true;
 
-  nix.configureBuildUsers = true;
 
   fonts = {
     fontDir.enable = true;
@@ -15,7 +14,14 @@
   };
 
   # We use Nix flakes
-  nix.extraOptions = "experimental-features = nix-command flakes";
+  nix = {
+    configureBuildUsers = true;
+    extraOptions = ''
+      experimental-features = nix-command flakes repl-flake
+      extra-nix-path = nixpkgs=flake:nixpkgs
+    '';
+
+  };
 
   # Ensure nix-darwin configures ZSH with a Nix-aware PATH
   programs.zsh = {
