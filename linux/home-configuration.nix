@@ -10,7 +10,9 @@
     ibm-plex
     inter
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    obsidian
     racket
+    tlaplusToolbox
     tofi
   ];
 
