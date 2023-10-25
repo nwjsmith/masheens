@@ -13,6 +13,7 @@
     obsidian
     racket
     spotify
+    tuba
   ];
 
   programs.direnv.enable = true;
