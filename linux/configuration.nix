@@ -37,7 +37,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ ibm-plex neovim git ];
+  environment.systemPackages = with pkgs; [ git neovim ];
 
   environment.variables = {
     EDITOR = "nvim";
@@ -63,42 +63,19 @@
     ];
   };
 
-
   programs.zsh.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
 
-  console.earlySetup = true;
-
-  services.greetd = {
+  services.xserver = {
     enable = true;
-    settings.default_session.command = ''
-      ${pkgs.greetd.tuigreet}/bin/tuigreet \
-        --time \
-        --asterisks \
-        --user-menu \
-        --cmd sway
-    '';
-  };
-
-  environment.etc."greetd/environments".text = "sway";
-
-  security.polkit.enable = true;
-
-  sound.enable = true;
-
-  hardware.pulseaudio.enable = true;
-
-  hardware.opengl.enable = true;
-
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "IBM Plex Mono" ];
-      sansSerif = [ "IBM Plex Sans" ];
-      serif = [ "IBM Plex Serif" ];
-      emoji = [ "Noto Color Emoji" ];
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "nwjsmith";
+      };
+      gdm.enable = true;
     };
-    hinting.enable = false;
   };
 }
