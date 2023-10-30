@@ -20,7 +20,6 @@
       experimental-features = nix-command flakes repl-flake
       extra-nix-path = nixpkgs=flake:nixpkgs
     '';
-
   };
 
   # Ensure nix-darwin configures ZSH with a Nix-aware PATH
