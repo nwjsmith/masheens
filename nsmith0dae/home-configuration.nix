@@ -20,16 +20,6 @@
 
   programs.emacs.package = pkgs.emacs29-macport;
 
-  home.file.".local/bin/tarsnap-backup" = {
-    executable = true;
-    text = ''
-      #!/bin/sh
-      ${pkgs.tarsnap}/bin/tarsnap -c \
-        -f "$(uname -n)-$(date +%Y-%m-%d_%H-%M-%S)" \
-        ${config.home.homeDirectory}/Documents/org
-    '';
-  };
-
   home.activation = {
     installDoom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       DOOM="${config.home.homeDirectory}/.emacs.d"

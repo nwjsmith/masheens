@@ -10,7 +10,7 @@
     asciinema
     coreutils
     curl
-    discount
+    # discount
     editorconfig-core-c
     fd
     ffmpeg

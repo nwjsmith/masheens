@@ -9,11 +9,8 @@
     vimdiffAlias = true;
     extraLuaConfig = builtins.readFile ./config/nvim/init.lua;
     extraPackages = with pkgs; [
-      clojure-lsp
       fd
       gh
-      jdt-language-server
-      nodePackages.typescript-language-server
       ripgrep
     ];
     plugins = with pkgs.vimPlugins; [
