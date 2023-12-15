@@ -23,6 +23,7 @@
     scc
     shellcheck
     sqlite
+    sshuttle
     tmux
     (tree-sitter.withPlugins (_: tree-sitter.allGrammars))
   ];

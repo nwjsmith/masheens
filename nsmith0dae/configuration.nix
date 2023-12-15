@@ -97,10 +97,14 @@
       "homebrew/cask"
       "homebrew/core"
     ];
+    brews = [
+      "bazel"
+    ];
     casks = [
       "1password"
       "alloy"
       "amethyst"
+      "android-studio"
       "balenaetcher"
       "bartender"
       {
@@ -113,6 +117,7 @@
       "discord"
       "eclipse-ide"
       "firefox"
+      "fleet"
       "google-chrome"
       "grammarly"
       "hey"

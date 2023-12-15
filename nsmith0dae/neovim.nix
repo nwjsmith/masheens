@@ -22,6 +22,11 @@
       copilot-vim
       mini-nvim
       {
+        plugin = modus-themes-nvim;
+        type = "lua";
+        config = builtins.readFile ./config/nvim/after/plugin/modus.lua;
+      }
+      {
         plugin = nvim-lspconfig;
         type = "lua";
         config = builtins.readFile ./config/nvim/after/plugin/lspconfig.lua;
