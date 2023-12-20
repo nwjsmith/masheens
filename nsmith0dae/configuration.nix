@@ -29,8 +29,6 @@
     enableCompletion = false;
     loginShellInit = ''
       eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
-    '';
-    promptInit = "";
   };
 
   environment = {
@@ -103,9 +101,7 @@
     casks = [
       "1password"
       "alloy"
-      "amethyst"
       "android-studio"
-      "balenaetcher"
       "bartender"
       {
         name = "chromium";
@@ -115,12 +111,8 @@
       "dash"
       "deckset"
       "discord"
-      "eclipse-ide"
       "firefox"
-      "fleet"
       "google-chrome"
-      "grammarly"
-      "hey"
       "intellij-idea"
       "monodraw"
       "notion"
@@ -130,10 +122,8 @@
       "utm"
       "raycast"
       "reflect"
-      "screenflow"
       "signal"
       "slack"
-      "sonos"
       "soulver"
       "spotify"
       "sublime-merge"
