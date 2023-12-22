@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   # Have nix-darwin manage the Nix daemon
@@ -13,12 +13,13 @@
     ];
   };
 
-  # We use Nix flakes
+  nixpkgs.pkgs = pkgs;
+
   nix = {
     configureBuildUsers = true;
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
-      extra-nix-path = nixpkgs=flake:nixpkgs
+      extra-nix-path = nixpkgs=${inputs.nixpkgs}
     '';
   };
 
@@ -29,6 +30,7 @@
     enableCompletion = false;
     loginShellInit = ''
       eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+    '';
   };
 
   environment = {

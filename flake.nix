@@ -15,7 +15,7 @@
     , nixpkgs
     , nix-darwin
     , home-manager
-    }:
+    }@inputs:
     let
       lib = nixpkgs.lib;
       forSystems = systems: f: lib.genAttrs systems (system: f rec {
@@ -35,7 +35,7 @@
           hm = if os == "linux" then home-manager.nixosModules.home-manager else home-manager.darwinModules.home-manager;
         in
         osSystem {
-          inherit system;
+          inherit inputs system;
 
           pkgs = import nixpkgs {
             inherit system;
