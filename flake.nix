@@ -35,7 +35,9 @@
           hm = if os == "linux" then home-manager.nixosModules.home-manager else home-manager.darwinModules.home-manager;
         in
         osSystem {
-          inherit inputs system;
+          inherit system;
+
+          specialArgs = { inherit inputs; };
 
           pkgs = import nixpkgs {
             inherit system;

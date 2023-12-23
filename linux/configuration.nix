@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
   boot.loader.systemd-boot = {
@@ -19,7 +19,12 @@
 
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+    ];
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 
   services.openssh = {
     enable = true;

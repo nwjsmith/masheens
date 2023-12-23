@@ -10,9 +10,7 @@
     ibm-plex
     inter
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    obsidian
     racket
-    spotify
     tuba
   ];
 
