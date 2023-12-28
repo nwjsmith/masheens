@@ -2,6 +2,7 @@
   description = "Nate Smith's Nix configurations";
 
   inputs = {
+    ghostty.url = "github:mitchellh/ghostty";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -12,6 +13,7 @@
 
   outputs =
     { self
+    , ghostty
     , nixpkgs
     , nix-darwin
     , home-manager
@@ -42,6 +44,11 @@
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
+            overlays = [
+              (self: super: {
+                ghostty = ghostty.packages.${system}.default;
+              })
+            ];
           };
 
           modules = [

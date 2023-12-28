@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
   imports = [
     ./clojure.nix
   ];
@@ -15,6 +14,7 @@
     fd
     ffmpeg
     gh
+    ghostty
     jq
     niv
     nodejs
