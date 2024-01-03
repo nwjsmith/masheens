@@ -1,9 +1,7 @@
 { config, inputs, pkgs, ... }:
 
 {
-  # Have nix-darwin manage the Nix daemon
   services.nix-daemon.enable = true;
-
 
   fonts = {
     fontDir.enable = true;
@@ -23,7 +21,6 @@
     '';
   };
 
-  # Ensure nix-darwin configures ZSH with a Nix-aware PATH
   programs.zsh = {
     enable = true;
     enableBashCompletion = false;
@@ -124,6 +121,7 @@
       "utm"
       "raycast"
       "reflect"
+      "rescuetime"
       "signal"
       "slack"
       "soulver"

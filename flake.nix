@@ -107,7 +107,7 @@
               nixpkgs-fmt
               treefmt
               nodePackages.prettier
-              # clj-kondo
+              clj-kondo
               shellcheck
             ];
           };

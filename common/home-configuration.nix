@@ -14,7 +14,7 @@
     fd
     ffmpeg
     gh
-    ghostty
+    # ghostty
     jq
     niv
     nodejs
