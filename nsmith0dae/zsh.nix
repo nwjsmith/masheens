@@ -12,11 +12,16 @@
     enable = true;
     enableAutosuggestions = false;
     enableCompletion = true;
-    initExtra = builtins.readFile ./zshrc;
+    enableVteIntegration = true;
+    initExtra = ''
+      setopt interactive_comments
+      export DIRENV_LOG_FORMAT=""
+    '';
     syntaxHighlighting.enable = true;
   };
 
   programs.zoxide.enable = true;
+
   home.sessionVariables = {
     PAGER = "less -FR";
   };

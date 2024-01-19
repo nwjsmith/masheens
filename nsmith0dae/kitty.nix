@@ -24,6 +24,7 @@
       window_padding_width = "0 1";
       window_border_width = "0";
     };
+    shellIntegration.enableZshIntegration = true;
     theme = "Modus Operandi";
   };
 }
