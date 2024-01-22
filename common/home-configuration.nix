@@ -9,16 +9,12 @@
     asciinema
     coreutils
     curl
-    # discount
-    editorconfig-core-c
     fd
     ffmpeg
     gh
-    # ghostty
     jq
     niv
     nodejs
-    pandoc
     (ripgrep.override { withPCRE2 = true; })
     scc
     shellcheck
@@ -34,8 +30,6 @@
   };
 
   programs.home-manager.enable = true;
-
-  home.sessionPath = [ "${config.home.homeDirectory}/.emacs.d/bin" ];
 
   xdg.configFile."shellcheckrc".source = ./shellcheckrc;
 }
