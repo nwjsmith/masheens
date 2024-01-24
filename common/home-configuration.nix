@@ -32,4 +32,6 @@
   programs.home-manager.enable = true;
 
   xdg.configFile."shellcheckrc".source = ./shellcheckrc;
+  xdg.configFile."emacs/early-init.el".source = ./emacs/early-init.el;
+  xdg.configFile."emacs/init.el".source = ./emacs/init.el;
 }
