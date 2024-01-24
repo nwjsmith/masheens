@@ -17,8 +17,8 @@
     configureBuildUsers = true;
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
-      extra-nix-path = nixpkgs=${inputs.nixpkgs}
     '';
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   programs.zsh = {

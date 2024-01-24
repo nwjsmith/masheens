@@ -20,9 +20,7 @@
   i18n.defaultLocale = "en_CA.UTF-8";
 
   nix = {
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-    ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
   services.openssh = {
