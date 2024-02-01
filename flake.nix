@@ -9,6 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nix-darwin.follows = "nix-darwin";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -16,6 +24,7 @@
     , ghostty
     , nixpkgs
     , nix-darwin
+    , nixvim
     , home-manager
     }@inputs:
     let
@@ -68,6 +77,7 @@
                 useUserPackages = true;
                 users.${user} = ({ ... }: {
                   imports = [
+                    nixvim.homeManagerModules.nixvim
                     ./common/home-configuration.nix
                     ./${os}/home-configuration.nix
                     ./${host}/home-configuration.nix
