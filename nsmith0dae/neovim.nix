@@ -39,7 +39,6 @@
     };
     plugins = {
       copilot-lua.enable = true;
-      flash.enable = true;
       fugitive.enable = true;
       gitsigns.enable = true;
       lualine.enable = true;

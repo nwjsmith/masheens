@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Clone a from GitHub repository URL to ~/Code/<organization>/<repository>
+
+if [[ "$#" -ne 1 ]]; then
+    echo "Usage: $0 <GitHub repository URL>"
+    exit 1
+fi
+
+REPO_URL="$1"
+NORMALIZED_URL="${REPO_URL%.git}"
+ORGANIZATION=$(basename "$(dirname "${NORMALIZED_URL}")")
+REPOSITORY=$(basename "${NORMALIZED_URL}")
+TARGET_DIR="${HOME}/Code/${ORGANIZATION}/${REPOSITORY}"
+mkdir -p "${TARGET_DIR}"
+git clone "${REPO_URL%.git}.git" "${TARGET_DIR}"

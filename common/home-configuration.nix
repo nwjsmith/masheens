@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  programs.home-manager.enable = true;
+
   imports = [
     ./clojure.nix
   ];
@@ -29,9 +31,19 @@
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
 
-  programs.home-manager.enable = true;
+  home.activation = {
+    installDoom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      DOOM="${config.xdg.configHome}/emacs"
+      [ ! -d $DOOM ] && \
+        $DRY_RUN_CMD ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs.git $DOOM
+    '';
+  };
+  home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
+
+  home.file.".doom.d/init.el".source = ./doom.d/init.el;
+  home.file.".doom.d/packages.el".source = ./doom.d/packages.el;
+  home.file.".doom.d/config.el".source = ./doom.d/config.el;
+  home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
 
   xdg.configFile."shellcheckrc".source = ./shellcheckrc;
-  xdg.configFile."emacs/early-init.el".source = ./emacs/early-init.el;
-  xdg.configFile."emacs/init.el".source = ./emacs/init.el;
 }

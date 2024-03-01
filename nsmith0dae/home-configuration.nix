@@ -20,11 +20,6 @@
 
   programs.emacs.package = pkgs.emacs29-macport;
 
-  home.file.".doom.d/init.el".source = ./doom.d/init.el;
-  home.file.".doom.d/packages.el".source = ./doom.d/packages.el;
-  home.file.".doom.d/config.el".source = ./doom.d/config.el;
-  home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
-
   xdg.configFile."karabiner/assets/complex_modifications/escape.json".source =
     ./config/karabiner/assets/complex_modifications/escape.json;
 }

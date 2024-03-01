@@ -85,6 +85,14 @@
     source = ./local/bin/git-original-branch;
     executable = true;
   };
+  home.file.".local/bin/git-cclone" = {
+    source = ./local/bin/git-cclone;
+    executable = true;
+  };
+  home.file.".local/bin/git-run-branch" = {
+    source = ./local/bin/git-run-branch;
+    executable = true;
+  };
 
   home.file.".local/bin/ordinalize" = {
     source = ./local/bin/ordinalize;
@@ -93,11 +101,6 @@
 
   home.file.".local/bin/cycles" = {
     source = ./local/bin/cycles;
-    executable = true;
-  };
-
-  home.file.".local/bin/git-run-branch" = {
-    source = ./local/bin/git-run-branch;
     executable = true;
   };
 

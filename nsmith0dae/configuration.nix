@@ -111,6 +111,7 @@
       "deckset"
       "discord"
       "firefox"
+      "gitbutler"
       "google-chrome"
       "intellij-idea"
       "monodraw"
