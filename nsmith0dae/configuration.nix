@@ -82,64 +82,20 @@
   services.karabiner-elements.enable = true;
 
   homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "zap";
-      upgrade = true;
-    };
-    global.brewfile = true;
     taps = [
-      "homebrew/bundle"
-      "homebrew/cask"
-      "homebrew/core"
+      "wealthsimple/tap"
     ];
     brews = [
       "bazel"
     ];
     casks = [
-      "1password"
-      "alloy"
       "android-studio"
-      "bartender"
-      {
-        name = "chromium";
-        args.no_quarantine = true;
-      }
-      "cleanshot"
-      "dash"
-      "deckset"
-      "discord"
-      "firefox"
-      "gitbutler"
       "google-chrome"
       "intellij-idea"
-      "monodraw"
       "notion"
-      "obs"
-      "obsidian"
-      "qmk-toolbox"
-      "utm"
-      "raycast"
-      "reflect"
-      "rescuetime"
-      "signal"
       "slack"
-      "soulver"
-      "spotify"
-      "sublime-merge"
-      "sublime-text"
-      "the-unarchiver"
       "tuple"
-      "vlc"
       "zoom"
     ];
-    masApps = {
-      "Flow" = 1423210932;
-      "Ivory" = 6444602274;
-      "1Password for Safari" = 1569813296;
-      "Kindle" = 302584613;
-      "Things" = 904280696;
-    };
   };
 }
