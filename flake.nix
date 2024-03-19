@@ -110,15 +110,19 @@
         home = "/Users/nsmith";
       };
 
-      devShells = forAllSystems ({ system, pkgs, ... }:
+      formatter = forAllSystems ({ pkgs, ... }:
+        {
+          default = pkgs.nixpkgs-fmt;
+        });
+
+      devShells = forAllSystems ({ pkgs, ... }:
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
-              nixpkgs-fmt
-              treefmt
-              nodePackages.prettier
               clj-kondo
+              nodePackages.prettier
               shellcheck
+              treefmt
             ];
           };
         });
