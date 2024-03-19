@@ -41,12 +41,6 @@
 
   environment.systemPackages = with pkgs; [ git neovim ];
 
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    MANPAGER = "nvim +Man!";
-  };
-
   users = {
     mutableUsers = false;
     users.nwjsmith = {
