@@ -44,7 +44,10 @@
               ("<tab>" . 'copilot-accept-completion)
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+              ("C-<tab>" . 'copilot-accept-completion-by-word))
+  :config (add-to-list 'copilot-indentation-alist
+                       '(nix-mode . 2)
+                       '(emacs-lisp-mode . 2)))
 
 (use-package! modus-themes
   :init
