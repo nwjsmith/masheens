@@ -37,6 +37,7 @@
       "utm"
       "raycast"
       "reflect"
+      "rescuetime"
       "signal"
       "soulver"
       "sublime-merge"
