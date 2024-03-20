@@ -10,7 +10,7 @@
   programs.zsh = {
     defaultKeymap = "viins";
     enable = true;
-    enableAutosuggestions = false;
+    autosuggestion.enable = true;
     enableCompletion = true;
     enableVteIntegration = true;
     initExtra = ''
