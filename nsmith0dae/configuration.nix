@@ -79,17 +79,11 @@
     };
   };
 
-  services.karabiner-elements.enable = true;
-
   homebrew = {
     taps = [
       "wealthsimple/tap"
     ];
-    brews = [
-      "bazel"
-    ];
     casks = [
-      "android-studio"
       "google-chrome"
       "intellij-idea"
       "notion"

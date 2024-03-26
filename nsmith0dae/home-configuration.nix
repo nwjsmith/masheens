@@ -10,7 +10,6 @@
     amazon-ecr-credential-helper
     colima
     awscli2
-    d2
     docker-client
     docker-compose
     docker-credential-helpers
