@@ -110,10 +110,7 @@
         home = "/Users/nsmith";
       };
 
-      formatter = forAllSystems ({ pkgs, ... }:
-        {
-          default = pkgs.nixpkgs-fmt;
-        });
+      formatter = forAllSystems ({ pkgs, ... }: pkgs.nixpkgs-fmt);
 
       devShells = forAllSystems ({ pkgs, ... }:
         {
