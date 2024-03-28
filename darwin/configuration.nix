@@ -52,4 +52,6 @@
       "Things" = 904280696;
     };
   };
+
+  services.karabiner-elements.enable = true;
 }
