@@ -47,8 +47,7 @@
               ("C-<tab>" . 'copilot-accept-completion-by-word))
   :config (add-to-list 'copilot-indentation-alist
                        '(nix-mode . 2)
-                       '(emacs-lisp-mode . 2)
-                       '(bazel . 4)))
+                       '(emacs-lisp-mode . 2)))
 
 (use-package! modus-themes
   :init
