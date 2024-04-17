@@ -1,6 +1,13 @@
 { ... }:
 
 {
+  services.dnsmasq = {
+    enable = true;
+    addresses = {
+      "simplex.localhost" = "127.0.0.1";
+    };
+  };
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -52,6 +59,8 @@
       "Things" = 904280696;
     };
   };
+
+  environment.variables.EDITOR = "zed --wait";
 
   services.karabiner-elements.enable = true;
 }

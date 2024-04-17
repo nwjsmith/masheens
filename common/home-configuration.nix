@@ -14,14 +14,15 @@
     fd
     ffmpeg
     gh
+    go
+    gopls
     jq
-    niv
+    lazygit
     nodejs
     (ripgrep.override { withPCRE2 = true; })
     scc
     shellcheck
     sqlite
-    sshuttle
     tmux
     (tree-sitter.withPlugins (_: tree-sitter.allGrammars))
   ];

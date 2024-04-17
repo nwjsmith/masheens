@@ -15,10 +15,8 @@
     docker-credential-helpers
     nodePackages.mermaid-cli
     yt-dlp
+    libyaml
   ];
 
-  programs.emacs.package = pkgs.emacs29-macport;
-
-  xdg.configFile."karabiner/assets/complex_modifications/escape.json".source =
-    ./config/karabiner/assets/complex_modifications/escape.json;
+  programs.mise.enable = true;
 }
