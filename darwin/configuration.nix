@@ -60,7 +60,10 @@
     };
   };
 
-  environment.variables.EDITOR = "zed --wait";
+  environment.variables = {
+    EDITOR = "zed --wait";
+    VISUAL = "zed --wait";
+  };
 
   services.karabiner-elements.enable = true;
 }

@@ -9,7 +9,7 @@
       maplocalleader = "\\";
       timeoutlen = 200;
     };
-    opts = {
+    options = {
       autowrite = true;
       clipboard = "unnamedplus";
       completeopt = "menu,menuone,noselect";
