@@ -17,6 +17,7 @@
     go
     gopls
     jq
+    jujutsu
     lazygit
     nodejs
     (ripgrep.override { withPCRE2 = true; })
