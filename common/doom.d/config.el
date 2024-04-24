@@ -2,9 +2,7 @@
       display-line-numbers-type nil
       doom-font (font-spec :family "Berkeley Mono" :size 16.0)
       doom-variable-pitch-font (font-spec :family "Berkeley Mono Variable")
-      fancy-splash-image (concat doom-user-dir "w.svg"))
-
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+      doom-theme 'doom-gruvbox-light)
 
 (after! company
   (setq company-idle-delay nil))
@@ -48,15 +46,6 @@
   :config (add-to-list 'copilot-indentation-alist
                        '(nix-mode . 2)
                        '(emacs-lisp-mode . 2)))
-
-(use-package! modus-themes
-  :init
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-mixed-fonts t
-        modus-themes-variable-pitch-ui nil)
-  :config
-  (load-theme 'modus-operandi :no-confirm))
 
 (after! typescript-mode
   (setq typescript-indent-level 2)

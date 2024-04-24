@@ -20,44 +20,57 @@
   };
 
   outputs =
-    { self
-    , ghostty
-    , nixpkgs
-    , nix-darwin
-    , nixvim
-    , home-manager
+    {
+      self,
+      ghostty,
+      nixpkgs,
+      nix-darwin,
+      nixvim,
+      home-manager,
     }@inputs:
     let
       lib = nixpkgs.lib;
-      forSystems = systems: f: lib.genAttrs systems (system: f rec {
-        inherit system;
-        pkgs = import nixpkgs { inherit system; };
-      });
-      forAllSystems = forSystems [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      forSystems =
+        systems: f:
+        lib.genAttrs systems (
+          system:
+          f {
+            inherit system;
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
+      forAllSystems = forSystems [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
       makeSystem =
-        { system
-        , host
-        , user
-        , home
+        {
+          system,
+          host,
+          user,
+          home,
         }:
         let
           os = lib.lists.last (lib.strings.splitString "-" system);
           osSystem = if os == "linux" then lib.nixosSystem else nix-darwin.lib.darwinSystem;
-          hm = if os == "linux" then home-manager.nixosModules.home-manager else home-manager.darwinModules.home-manager;
+          hm =
+            if os == "linux" then
+              home-manager.nixosModules.home-manager
+            else
+              home-manager.darwinModules.home-manager;
         in
         osSystem {
           inherit system;
 
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
 
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [
-              (self: super: {
-                ghostty = ghostty.packages.${system}.default;
-              })
-            ];
+            overlays = [ (self: super: { ghostty = ghostty.packages.${system}.default; }) ];
           };
 
           modules = [
@@ -75,14 +88,17 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.${user} = ({ ... }: {
-                  imports = [
-                    nixvim.homeManagerModules.nixvim
-                    ./common/home-configuration.nix
-                    ./${os}/home-configuration.nix
-                    ./${host}/home-configuration.nix
-                  ];
-                });
+                users.${user} = (
+                  { ... }:
+                  {
+                    imports = [
+                      nixvim.homeManagerModules.nixvim
+                      ./common/home-configuration.nix
+                      ./${os}/home-configuration.nix
+                      ./${host}/home-configuration.nix
+                    ];
+                  }
+                );
               };
             }
           ];
@@ -110,9 +126,10 @@
         home = "/Users/nsmith";
       };
 
-      formatter = forAllSystems ({ pkgs, ... }: pkgs.nixpkgs-fmt);
+      formatter = forAllSystems ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
 
-      devShells = forAllSystems ({ pkgs, ... }:
+      devShells = forAllSystems (
+        { pkgs, ... }:
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
@@ -122,6 +139,7 @@
               treefmt
             ];
           };
-        });
+        }
+      );
     };
 }

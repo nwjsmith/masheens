@@ -5,4 +5,3 @@
 (package! evil-cleverparens)
 (package! jarchive)
 (package! jest-test-mode)
-(package! modus-themes)

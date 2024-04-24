@@ -9,7 +9,7 @@
       maplocalleader = "\\";
       timeoutlen = 200;
     };
-    options = {
+    opts = {
       autowrite = true;
       clipboard = "unnamedplus";
       completeopt = "menu,menuone,noselect";
@@ -69,10 +69,9 @@
       which-key.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
-      modus-themes-nvim
       vim-rhubarb
     ];
-    colorscheme = "modus";
+    colorschemes.gruvbox.enable = true;
     keymaps = [
       {
         action = "<cmd>Telescope buffers sort_mru=tru sort_lastused=true<cr>";

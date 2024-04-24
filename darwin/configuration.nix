@@ -40,6 +40,7 @@
       "movist-pro"
       "obs"
       "obsidian"
+      "ollama"
       "qmk-toolbox"
       "utm"
       "raycast"
