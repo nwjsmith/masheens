@@ -1,5 +1,6 @@
 [formatter.nix]
-command = "nixpkgs-fmt"
+command = "nix"
+options = ["fmt"]
 includes = ["*.nix"]
 
 [formatter.shell]
@@ -34,10 +35,7 @@ includes = [
 
 [formatter.clojure]
 command = "sh"
-options = [
-  "-euc",
-  """
+options = ["-euc", """
   clj-kondo --lint "$@"
-"""
-]
+"""]
 includes = ["*.clj", "*.cljs", "*.cljc", "*.edn"]

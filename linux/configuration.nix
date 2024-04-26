@@ -1,4 +1,10 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   boot.loader.systemd-boot = {
@@ -10,9 +16,7 @@
 
   services.tailscale = {
     enable = true;
-    extraUpFlags = [
-      "--ssh"
-    ];
+    extraUpFlags = [ "--ssh" ];
   };
 
   time.timeZone = "America/Toronto";
@@ -21,7 +25,10 @@
 
   nix = {
     registry.nixpkgs.flake = inputs.nixpkgs;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
   services.openssh = {
     enable = true;
@@ -40,7 +47,10 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [ git neovim ];
+    systemPackages = with pkgs; [
+      git
+      neovim
+    ];
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -53,7 +63,10 @@
       isNormalUser = true;
       description = "Nate Smith";
       home = "/home/nwjsmith";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       hashedPassword = "$y$j9T$aJNKS3JG64FqRJKIWTq5f1$OfZVU/eVlqrU/O4XMZo/G9OocZtZGZ1ddd7Tg5HSwUB";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtWR1nXAvSmsd92TC9rMuZIh1Ec8cqxYr3BIyUxdNyy"

@@ -34,7 +34,6 @@
       "dash"
       "deckset"
       "discord"
-      "firefox"
       "intellij-idea"
       "monodraw"
       "movist-pro"
@@ -48,8 +47,6 @@
       "rescuetime"
       "signal"
       "soulver"
-      "sublime-merge"
-      "sublime-text"
       "the-unarchiver"
     ];
     masApps = {

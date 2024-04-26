@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   services.nix-daemon.enable = true;
@@ -31,8 +36,14 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [ kitty terminal-notifier ];
-    shells = with pkgs; [ bashInteractive zsh ];
+    systemPackages = with pkgs; [
+      kitty
+      terminal-notifier
+    ];
+    shells = with pkgs; [
+      bashInteractive
+      zsh
+    ];
     variables = {
       SHELL = "${pkgs.zsh}/bin/zsh";
     };
@@ -80,9 +91,7 @@
   };
 
   homebrew = {
-    taps = [
-      "wealthsimple/tap"
-    ];
+    taps = [ "wealthsimple/tap" ];
     casks = [
       "google-chrome"
       "intellij-idea"

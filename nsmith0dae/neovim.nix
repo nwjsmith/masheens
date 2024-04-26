@@ -68,63 +68,88 @@
       ts-context-commentstring.enable = true;
       which-key.enable = true;
     };
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-rhubarb
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ vim-rhubarb ];
     colorschemes.gruvbox.enable = true;
     keymaps = [
       {
         action = "<cmd>Telescope buffers sort_mru=tru sort_lastused=true<cr>";
         key = "<Leader>bb";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Switch buffer";
       }
       {
         action = "<cmd>Telescope command_history<cr>";
         key = "<Leader>:";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Command history";
       }
       {
         action = "<cmd>Telescope resume<cr>";
         key = "<Leader>'";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Continue last telescope";
       }
       {
         action = "<cmd>Telescope live_grep<cr>";
         key = "<Leader>/";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Live grep";
       }
       {
         action = "<cmd>Telescope find_files<cr>";
         key = "<Leader><space>";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Find files";
       }
       {
         action = "<cmd>Telescope find_files cwd=false<cr>";
         key = "<Leader>ff";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Find files in current directory";
       }
       {
         action = "<cmd>Telescope man_pages<cr>";
         key = "<Leader>hm";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Man pages";
       }
       {
         action = "<cmd>Telescope git_commits<cr>";
         key = "<Leader>gc";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Git commits";
       }
       {
         action = "<cmd>Telescope git_status<cr>";
         key = "<Leader>gs";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         options.desc = "Git status";
       }
     ];

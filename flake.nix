@@ -17,6 +17,7 @@
         home-manager.follows = "home-manager";
       };
     };
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs =
@@ -27,6 +28,7 @@
       nix-darwin,
       nixvim,
       home-manager,
+      nur,
     }@inputs:
     let
       lib = nixpkgs.lib;
@@ -70,7 +72,10 @@
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [ (self: super: { ghostty = ghostty.packages.${system}.default; }) ];
+            overlays = [
+              (self: super: { ghostty = ghostty.packages.${system}.default; })
+              nur.overlay
+            ];
           };
 
           modules = [
@@ -87,7 +92,6 @@
               users.users.${user}.home = home;
               home-manager = {
                 useGlobalPkgs = true;
-                useUserPackages = true;
                 users.${user} = (
                   { ... }:
                   {

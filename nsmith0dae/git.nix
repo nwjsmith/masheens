@@ -45,9 +45,11 @@
       ".lsp/"
       "*.iml"
     ];
-    includes = [{
-      path = "${config.xdg.configHome}/git/wealthsimple.gitconfig";
-      condition = "gitdir:~/Code/wealthsimple/";
-    }];
+    includes = [
+      {
+        path = "${config.xdg.configHome}/git/wealthsimple.gitconfig";
+        condition = "gitdir:~/Code/wealthsimple/";
+      }
+    ];
   };
 }
