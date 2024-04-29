@@ -19,10 +19,34 @@
         privacy-badger
         refined-github
         sponsorblock
+        ublock-origin
         vimium
       ];
+      search = {
+        default = "DuckDuckGo";
+        force = true;
+      };
       settings = {
+        "app.normandy.enabled" = false;
+        "app.update.auto" = false;
+        "beacon.enabled" = false;
+        "browser.aboutConfig.showWarning" = false;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "geo.enabled" = false;
+          "browser.startup.homepage_override.mstone" = "ignore";
+        "browser.firefox-view.search.enabled" = false;
+        "browser.newtabpage.enabled" = false;
+        "browser.search.countryCode" = "CA";
+        "browser.search.isUS" = false;
+        "browser.search.region" = "CA";
+        "browser.tabs.firefox-view" = false;
+        "browser.uidensity" = 0;
         "extensions.pocket.enabled" = false;
+        "general.useragent.locale" = "en-CA";
+        "signon.rememberSignons" = false;
+        "toolkit.telemetry.enabled" = false;
+        "toolkit.telemetry.rejected" = true;
+        "toolkit.telemetry.updatePing.enabled" = false;
       };
       containers.personal = {
         id = 1;
