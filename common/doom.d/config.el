@@ -20,8 +20,7 @@
   (setq magit-section-visibility-indicator '("..." . t)))
 
 (after! nix
-  (map! :localleader :map nix-mode-map "F" #'nix-flake)
-  (add-to-list 'copilot-indentation-alist '(nix-mode . nix-indent-offset)))
+  (map! :localleader :map nix-mode-map "F" #'nix-flake))
 
 (use-package! evil-cleverparens
   :init (setq evil-cleverparens-use-s-and-S nil)
