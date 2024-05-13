@@ -1,11 +1,7 @@
 (setq auth-sources '("~/.authinfo.gpg")
       display-line-numbers-type nil
       doom-font (font-spec :family "Berkeley Mono" :size 16.0)
-      doom-variable-pitch-font (font-spec :family "Berkeley Mono Variable")
-      doom-theme 'doom-gruvbox-light)
-
-(after! company
-  (setq company-idle-delay nil))
+      doom-variable-pitch-font (font-spec :family "Berkeley Mono Variable"))
 
 (after! cider
   (setq cider-clojure-cli-aliases "dev"
@@ -24,7 +20,8 @@
   (setq magit-section-visibility-indicator '("..." . t)))
 
 (after! nix
-  (map! :localleader :map nix-mode-map "F" #'nix-flake))
+  (map! :localleader :map nix-mode-map "F" #'nix-flake)
+  (add-to-list 'copilot-indentation-alist '(nix-mode . nix-indent-offset)))
 
 (use-package! evil-cleverparens
   :init (setq evil-cleverparens-use-s-and-S nil)
@@ -43,9 +40,10 @@
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word))
-  :config (add-to-list 'copilot-indentation-alist
-                       '(nix-mode . 2)
-                       '(emacs-lisp-mode . 2)))
+  :config
+  (setq copilot-indent-offset-warning-disable t))
+
+(use-package! modus-themes :config (load-theme 'modus-operandi :no-confirm))
 
 (after! typescript-mode
   (setq typescript-indent-level 2)

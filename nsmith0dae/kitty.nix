@@ -25,6 +25,6 @@
       window_border_width = "0";
     };
     shellIntegration.enableZshIntegration = true;
-    theme = "Gruvbox Light";
+    theme = "Modus Operandi";
   };
 }

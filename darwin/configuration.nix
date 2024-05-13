@@ -1,13 +1,6 @@
 { ... }:
 
 {
-  services.dnsmasq = {
-    enable = true;
-    addresses = {
-      "simplex.localhost" = "127.0.0.1";
-    };
-  };
-
   homebrew = {
     enable = true;
     onActivation = {
@@ -35,6 +28,7 @@
       "deckset"
       "discord"
       "intellij-idea"
+      "keymapp"
       "monodraw"
       "movist-pro"
       "obs"

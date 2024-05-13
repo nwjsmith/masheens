@@ -126,7 +126,7 @@
 
   programs.bat = {
     enable = true;
-    config.theme = "gruvbox-light";
+    config.theme = "ansi";
   };
 
   programs.gh = {
@@ -140,18 +140,22 @@
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
     defaultOptions = [
-      "--color=bg+:#EBDBB2" # Background color for current line (soft light)
-      "--color=bg:#FBF1C7" # Background color for other lines (light)
-      "--color=spinner:#CC241D" # Spinner color (strong red)
-      "--color=hl:#B16286" # Highlight color for matched text (muted purple)
-      "--color=fg:#3C3836" # Foreground color for text (dark gray for light backgrounds)
-      "--color=header:#7C6F64" # Header color (muted foreground)
-      "--color=info:#98971A" # Info color (muted green)
-      "--color=pointer:#9D0006" # Pointer color (strong red)
-      "--color=marker:#CC241D" # Marker color (strong red)
-      "--color=fg+:#282828" # Foreground color for current line (dark background)
-      "--color=prompt:#CC241D" # Prompt color (strong red)
-      "--color=hl+:#FB4934" # Highlight color for matched text on current line (strong red)
+      "--color=fg:#000000"
+      "--color=bg:#ffffff"
+      "--color=preview-fg:#595959"
+      "--color=preview-bg:#f0f0f0"
+      "--color=hl:#193668"
+      "--color=fg+:#ffffff"
+      "--color=bg+:#c4c4c4"
+      "--color=gutter:#c4c4c4"
+      "--color=hl+:#193668"
+      "--color=info:#005f5f"
+      "--color=border:#9f9f9f"
+      "--color=prompt:#0031a9"
+      "--color=pointer:#b2b2b2"
+      "--color=marker:#94d4ff"
+      "--color=spinner:#0000ff"
+      "--color=header:#0000b0"
     ];
   };
 
@@ -170,4 +174,5 @@
   home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
 
   xdg.configFile."shellcheckrc".source = ./shellcheckrc;
+  xdg.configFile."ghostty/config".source = ./config/ghostty/config;
 }
