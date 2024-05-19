@@ -1,23 +1,33 @@
 font-family = "Berkeley Mono"
 font-size = 16
-background = #ffffff
-foreground = #000000
-selection-foreground = #ffffff
-selection-background = #000000
-palette = 0=#000000
-palette = 1=#a60000
-palette = 2=#006800
-palette = 3=#6f5500
-palette = 4=#0031a9
-palette = 5=#721045
-palette = 6=#005e8b
-palette = 7=#bcbcbc
-palette = 8=#626262
-palette = 9=#d00000
-palette = 10=#008900
-palette = 11=#808000
-palette = 12=#0000ff
-palette = 13=#dd22dd
-palette = 14=#008899
-palette = 15=#ffffff
-cursor-color = #193668
+background = #191724
+foreground = #e0def4
+selection-foreground = #e0def4
+selection-background = #403d52
+
+palette = 0=#26233a
+palette = 8=#6e6a86
+
+palette = 1=#eb6f92
+palette = 9=#eb6f92
+
+palette = 2=#31748f
+palette = 10=#31748f
+
+palette = 3=#f6c177
+palette = 11=#f6c177
+
+palette = 4=#9ccfd8
+palette = 12=#9ccfd8
+
+palette = 5=#c4a7e7
+palette = 13=#c4a7e7
+
+palette = 6=#ebbcba
+palette = 14=#ebbcba
+
+palette = 7=#e0def4
+palette = 15=#e0def4
+
+cursor-color = #524f67
+cursor-text = #e0def4

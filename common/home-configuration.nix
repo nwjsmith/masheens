@@ -55,7 +55,6 @@
   };
 
   programs.zsh = {
-    defaultKeymap = "viins";
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
@@ -90,22 +89,11 @@
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
     defaultOptions = [
-      "--color=fg:#000000"
-      "--color=bg:#ffffff"
-      "--color=preview-fg:#595959"
-      "--color=preview-bg:#f0f0f0"
-      "--color=hl:#193668"
-      "--color=fg+:#ffffff"
-      "--color=bg+:#c4c4c4"
-      "--color=gutter:#c4c4c4"
-      "--color=hl+:#193668"
-      "--color=info:#005f5f"
-      "--color=border:#9f9f9f"
-      "--color=prompt:#0031a9"
-      "--color=pointer:#b2b2b2"
-      "--color=marker:#94d4ff"
-      "--color=spinner:#0000ff"
-      "--color=header:#0000b0"
+      "--color=fg:#908caa,bg:#191724,hl:#ebbcba"
+      "--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba"
+      "--color=border:#403d52,header:#31748f,gutter:#191724"
+      "--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52"
+      "--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
     ];
   };
 

@@ -11,6 +11,7 @@
     };
     opts = {
       autowrite = true;
+      background = "dark";
       clipboard = "unnamedplus";
       completeopt = "menu,menuone,noselect";
       conceallevel = 2;
@@ -68,8 +69,7 @@
       ts-context-commentstring.enable = true;
       which-key.enable = true;
     };
-    extraPlugins = with pkgs.vimPlugins; [ vim-rhubarb ];
-    colorschemes.gruvbox.enable = true;
+    colorschemes.rose-pine.enable = true;
     keymaps = [
       {
         action = "<cmd>Telescope buffers sort_mru=tru sort_lastused=true<cr>";
