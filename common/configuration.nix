@@ -1,5 +1,9 @@
 { ... }:
 
 {
-  environment.variables.MANPAGER = "nvim +Man!";
+  environment.variables = {
+    EDITOR = "nvim";
+    MANPAGER = "nvim +Man!";
+    VISUAL = "nvim";
+  };
 }

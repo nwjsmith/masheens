@@ -10,7 +10,10 @@
 
   imports = [ ./clojure.nix ];
 
-  home.packages = with pkgs; [
+  home.packages = [
+    (pkgs.ripgrep.override { withPCRE2 = true; })
+    (pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+  ] ++ (with pkgs; [
     asciinema
     coreutils
     curl
@@ -21,15 +24,12 @@
     gopls
     jq
     jujutsu
-    lazygit
     nodejs
-    (ripgrep.override { withPCRE2 = true; })
     scc
     shellcheck
     sqlite
     tmux
-    (tree-sitter.withPlugins (_: tree-sitter.allGrammars))
-  ];
+  ]);
 
   programs.emacs = {
     enable = true;
@@ -56,7 +56,10 @@
 
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=#595959";
+    };
     enableCompletion = true;
     enableVteIntegration = true;
     initExtra = ''
@@ -89,11 +92,15 @@
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
     defaultOptions = [
-      "--color=fg:#908caa,bg:#191724,hl:#ebbcba"
-      "--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba"
-      "--color=border:#403d52,header:#31748f,gutter:#191724"
-      "--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52"
-      "--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+      "--color=fg:#000000,bg:#ffffff,hl:#0031a9"
+      "--color=fg+:#000000,bg+:#c4c4c4,hl+:#0031a9"
+      "--color=info:#005e8b"
+      "--color=border:#9f9f9f"
+      "--color=header:#193668"
+      "--color=prompt:#0031a9"
+      "--color=pointer:#a60000"
+      "--color=marker:#a60000"
+      "--color=spinner:#005e8b"
     ];
   };
 

@@ -18,7 +18,7 @@
       "1password"
       "alloy"
       "android-studio"
-      "bartender"
+      "bruno"
       {
         name = "chromium";
         args.no_quarantine = true;
@@ -27,7 +27,9 @@
       "dash"
       "deckset"
       "discord"
+      "firefox"
       "intellij-idea"
+      "jordanbaird-ice"
       "keymapp"
       "monodraw"
       "movist-pro"
@@ -41,6 +43,7 @@
       "rescuetime"
       "signal"
       "soulver"
+      "steermouse"
       "the-unarchiver"
     ];
     masApps = {
@@ -50,11 +53,6 @@
       "Kindle" = 302584613;
       "Things" = 904280696;
     };
-  };
-
-  environment.variables = {
-    EDITOR = "zed --wait";
-    VISUAL = "zed --wait";
   };
 
   services.karabiner-elements.enable = true;

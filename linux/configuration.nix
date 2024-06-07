@@ -51,10 +51,6 @@
       git
       neovim
     ];
-    variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
   };
 
   users = {
