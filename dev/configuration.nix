@@ -6,12 +6,12 @@
 }:
 
 {
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   networking.hostName = "dev";
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 }
