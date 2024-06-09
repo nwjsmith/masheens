@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -14,9 +12,13 @@
     _1password-gui
     ibm-plex
     inter
+    jetbrains.idea-community-bin
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    obsidian
     racket
+    tlaplusToolbox
     tuba
+    vlc
   ];
 
   programs.firefox = {

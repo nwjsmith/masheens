@@ -8,7 +8,10 @@
 {
   programs.home-manager.enable = true;
 
-  imports = [ ./clojure.nix ];
+  imports = [
+    ./clojure.nix
+    ./neovim.nix
+  ];
 
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
@@ -19,11 +22,13 @@
     curl
     fd
     ffmpeg
+    flameshot
     gh
     go
     gopls
     jq
     jujutsu
+    localsend
     nodejs
     scc
     shellcheck

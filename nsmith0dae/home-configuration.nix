@@ -12,7 +12,6 @@
     ./git.nix
     ./gpg.nix
     ./kitty.nix
-    ./neovim.nix
     ./zsh.nix
   ];
 
