@@ -4,6 +4,7 @@
   programs.nixvim = {
     colorschemes.modus.enable = true;
     enable = true;
+    defaultEditor = true;
     globals = {
       autoformat = true;
       mapleader = " ";
@@ -374,5 +375,6 @@
     };
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
   };
 }

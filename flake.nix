@@ -2,7 +2,7 @@
   description = "Nate Smith's Nix configurations";
 
   inputs = {
-    ghostty.url = "github:mitchellh/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -70,7 +70,10 @@
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [ (self: super: { ghostty = ghostty.packages.${system}.default; }) ];
+            overlays = [ (self: super: {
+              gdtoolkit = super.gdtoolkit_3;
+              ghostty = ghostty.packages.${system}.default;
+            }) ];
           };
 
           modules = [

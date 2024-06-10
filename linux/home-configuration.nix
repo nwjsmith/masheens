@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     _1password-gui
+    ghostty
     ibm-plex
     inter
     jetbrains.idea-community-bin
@@ -18,6 +19,7 @@
     racket
     tlaplusToolbox
     tuba
+    ulauncher
     vlc
   ];
 
@@ -25,6 +27,8 @@
     enable = true;
     package = pkgs.firefox-wayland;
   };
+
+  # home.sessionVariables.GHOSTTY_RESOURCES_DIR = "${pkgs.ghostty}/share";
 
   programs.git = {
     enable = true;
