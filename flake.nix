@@ -3,6 +3,7 @@
 
   inputs = {
     ghostty.url = "github:ghostty-org/ghostty";
+    ghostty-hm.url = "github:clo4/ghostty-hm-module";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -12,7 +13,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        # nixpkgs.follows = "nixpkgs";
         nix-darwin.follows = "nix-darwin";
         home-manager.follows = "home-manager";
       };
@@ -21,12 +22,13 @@
 
   outputs =
     {
-      self,
       ghostty,
+      ghostty-hm,
       nixpkgs,
       nix-darwin,
       nixvim,
       home-manager,
+      ...
     }@inputs:
     let
       lib = nixpkgs.lib;
@@ -71,7 +73,6 @@
             inherit system;
             config.allowUnfree = true;
             overlays = [ (self: super: {
-              gdtoolkit = super.gdtoolkit_3;
               ghostty = ghostty.packages.${system}.default;
             }) ];
           };
@@ -94,6 +95,7 @@
                   { ... }:
                   {
                     imports = [
+                      ghostty-hm.homeModules.default
                       nixvim.homeManagerModules.nixvim
                       ./common/home-configuration.nix
                       ./${os}/home-configuration.nix

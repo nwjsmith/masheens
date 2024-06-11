@@ -371,6 +371,7 @@
         nixvimInjections = true;
       };
       treesitter-textobjects.enable = true;
+      trim.enable = true;
       which-key.enable = true;
     };
     viAlias = true;

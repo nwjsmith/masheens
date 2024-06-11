@@ -1,7 +1,5 @@
 {
-  config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -13,11 +11,6 @@
   };
 
   networking.networkmanager.enable = true;
-
-  services.tailscale = {
-    enable = true;
-    extraUpFlags = [ "--ssh" ];
-  };
 
   time.timeZone = "America/Toronto";
 

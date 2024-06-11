@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -10,12 +9,12 @@
 
   imports = [
     ./clojure.nix
+    ./git.nix
     ./neovim.nix
   ];
 
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
-    (pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
   ] ++ (with pkgs; [
     asciinema
     coreutils
@@ -35,11 +34,6 @@
     sqlite
     tmux
   ]);
-
-  programs.emacs = {
-    enable = true;
-    extraPackages = (epkgs: [ epkgs.vterm ]);
-  };
 
   programs.starship = {
     enable = true;
@@ -109,20 +103,41 @@
     ];
   };
 
-  home.activation = {
-    installDoom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      DOOM="${config.xdg.configHome}/emacs"
-      [ ! -d $DOOM ] && \
-        $DRY_RUN_CMD ${pkgs.git}/bin/git clone --depth 1 https://github.com/doomemacs/doomemacs.git $DOOM
-    '';
-  };
-  home.sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
-
-  home.file.".doom.d/init.el".source = ./doom.d/init.el;
-  home.file.".doom.d/packages.el".source = ./doom.d/packages.el;
-  home.file.".doom.d/config.el".source = ./doom.d/config.el;
-  home.file.".doom.d/w.svg".source = ./doom.d/w.svg;
-
   xdg.configFile."shellcheckrc".source = ./shellcheckrc;
-  xdg.configFile."ghostty/config".source = ./config/ghostty/config;
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      background = "#ffffff";
+      cursor-color = "#000000";
+      cursor-text = "#ffffff";
+      font-family = "Berkeley Mono";
+      font-size = 16;
+      foreground = "#000000";
+      palette = [
+        "0=#ffffff"
+        "1=#a60000"
+        "2=#006800"
+        "3=#6f5500"
+        "4=#0031a9"
+        "5=#721045"
+        "6=#005e8b"
+        "7=#000000"
+        "8=#f2f2f2"
+        "9=#d00000"
+        "10=#008900"
+        "11=#808000"
+        "12=#0000ff"
+        "13=#dd22dd"
+        "14=#008899"
+        "15=#595959"
+        "16=#884900"
+        "17=#7f0000"
+      ];
+      selection-foreground = "#000000";
+      selection-background = "#dfa0f0";
+      window-vsync = false;
+    };
+  };
+
 }
