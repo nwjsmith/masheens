@@ -72,16 +72,16 @@
 
   security.sudo.wheelNeedsPassword = false;
 
+  services.displayManager = {
+    autoLogin = {
+      enable = true;
+      user = "nwjsmith";
+    };
+    gdm.enable = true;
+  };
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
-    displayManager = {
-      autoLogin = {
-        enable = true;
-        user = "nwjsmith";
-      };
-      gdm.enable = true;
-    };
   };
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;

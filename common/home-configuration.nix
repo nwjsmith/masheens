@@ -16,24 +16,16 @@
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
   ] ++ (with pkgs; [
-    asciinema
     coreutils
     curl
-    fd
     ffmpeg
-    flameshot
-    gh
-    go
-    gopls
-    jq
-    jujutsu
     localsend
-    nodejs
-    scc
-    shellcheck
-    sqlite
-    tmux
+    tokei
   ]);
+
+  programs.jujutsu.enable = true;
+
+  programs.jq.enable = true;
 
   programs.starship = {
     enable = true;
@@ -102,8 +94,6 @@
       "--color=spinner:#005e8b"
     ];
   };
-
-  xdg.configFile."shellcheckrc".source = ./shellcheckrc;
 
   programs.ghostty = {
     enable = true;
