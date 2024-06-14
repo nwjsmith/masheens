@@ -10,6 +10,7 @@
   imports = [
     ./clojure.nix
     ./git.nix
+    ./gpg.nix
     ./neovim.nix
   ];
 
@@ -76,6 +77,8 @@
     enable = true;
     gitCredentialHelper.enable = true;
   };
+
+  home.file.".psqlrc".source = ./psqlrc;
 
   programs.fzf = {
     enable = true;

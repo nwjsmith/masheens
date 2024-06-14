@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -15,19 +16,24 @@
       yolo = "push --force-with-lease";
     };
     extraConfig = {
-      github.user = "nwjsmith";
+      commit = {
+        gpgsign = true;
+        template = "${config.xdg.configHome}/git/gitmessage";
+      };
       fetch.prune = true;
+      github.user = "nwjsmith";
       init.defaultBranch = "main";
-      push.default = "current";
+      merge.conflictStyle = "diff3";
       pull.rebase = true;
+      push.default = "current";
       rebase = {
         autoSquash = true;
         autoStash = true;
       };
-      merge.conflictStyle = "diff3";
     };
     ignores = [
       ".#*"
+      ".DS_Store"
       ".dir-locals.el"
       ".direnv/"
       ".idea/"
@@ -35,6 +41,8 @@
       ".clj-kondo/"
       ".lsp/"
       "*.iml"
+      ".zed/"
     ];
   };
+  xdg.configFile."git/gitmessage".source = ./git/gitmessage;
 }

@@ -8,8 +8,6 @@
 
   imports = [
     ./git.nix
-    ./gpg.nix
-    ./kitty.nix
     ./zsh.nix
   ];
 

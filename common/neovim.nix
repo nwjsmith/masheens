@@ -226,7 +226,6 @@
       background = "light";
       clipboard = "unnamedplus";
       completeopt = "menu,menuone,noselect";
-      conceallevel = 2;
       expandtab = true;
       formatoptions = "tcroqnlj";
       grepformat = "%f:%l:%c:%m";
