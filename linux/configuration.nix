@@ -68,6 +68,12 @@
     ];
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   programs.zsh.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
@@ -77,11 +83,11 @@
       enable = true;
       user = "nwjsmith";
     };
-    gdm.enable = true;
   };
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
   };
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;

@@ -13,7 +13,7 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        # nixpkgs.follows = "nixpkgs";
         nix-darwin.follows = "nix-darwin";
         home-manager.follows = "home-manager";
       };
@@ -72,7 +72,8 @@
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [ (self: super: {
+            overlays = [ (final: prev: {
+              berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
               ghostty = ghostty.packages.${system}.default;
             }) ];
           };

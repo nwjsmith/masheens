@@ -27,7 +27,10 @@
     package = pkgs.firefox-wayland;
   };
 
-  programs.ghostty.package = pkgs.ghostty;
+  programs.ghostty = {
+    package = pkgs.ghostty;
+    settings.font-size = 11;
+  };
 
   fonts.fontconfig.enable = true;
 

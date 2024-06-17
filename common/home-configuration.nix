@@ -17,6 +17,7 @@
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
   ] ++ (with pkgs; [
+    berkeley-mono
     coreutils
     curl
     ffmpeg
@@ -105,7 +106,6 @@
       cursor-color = "#000000";
       cursor-text = "#ffffff";
       font-family = "Berkeley Mono";
-      font-size = 16;
       foreground = "#000000";
       palette = [
         "0=#ffffff"
