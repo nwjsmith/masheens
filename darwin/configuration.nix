@@ -109,6 +109,7 @@
       "flameshot"
       "intellij-idea"
       "jordanbaird-ice"
+      "karabiner-elements"
       "keymapp"
       "monodraw"
       "movist-pro"
@@ -134,6 +135,4 @@
       "Things" = 904280696;
     };
   };
-
-  services.karabiner-elements.enable = true;
 }

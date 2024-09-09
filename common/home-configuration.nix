@@ -17,6 +17,7 @@
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
   ] ++ (with pkgs; [
+    agenix
     berkeley-mono
     coreutils
     curl
@@ -102,35 +103,32 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      background = "#ffffff";
-      cursor-color = "#000000";
-      cursor-text = "#ffffff";
+      background = "#f5f5f5";
+      cursor-color = "#de5735";
+      cursor-text = "#f5f5f5";
       font-family = "Berkeley Mono";
-      foreground = "#000000";
+      foreground = "#1f1f1f";
       palette = [
-        "0=#ffffff"
-        "1=#a60000"
-        "2=#006800"
-        "3=#6f5500"
-        "4=#0031a9"
-        "5=#721045"
-        "6=#005e8b"
-        "7=#000000"
-        "8=#f2f2f2"
-        "9=#d00000"
-        "10=#008900"
-        "11=#808000"
-        "12=#0000ff"
-        "13=#dd22dd"
-        "14=#008899"
-        "15=#595959"
-        "16=#884900"
-        "17=#7f0000"
+        "0=#f5f5f5"
+        "1=#cb3a2a"
+        "2=#14710a"
+        "3=#846e15"
+        "4=#644ac9"
+        "5=#a3144d"
+        "6=#036a96"
+        "7=#1f1f1f"
+        "8=#635d97"
+        "9=#d74c3d"
+        "10=#198d0c"
+        "11=#9e841a"
+        "12=#7862d0"
+        "13=#bf185a"
+        "14=#047fb4"
+        "15=#2c2b31"
       ];
-      selection-foreground = "#000000";
-      selection-background = "#dfa0f0";
+      selection-foreground = "#f5f5f5";
+      selection-background = "#de5735";
       window-vsync = false;
     };
   };
-
 }

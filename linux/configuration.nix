@@ -40,12 +40,10 @@
     };
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      git
-      neovim
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    git
+    neovim
+  ];
 
   users = {
     mutableUsers = false;

@@ -2,6 +2,7 @@
   description = "Nate Smith's Nix configurations";
 
   inputs = {
+    agenix.url = "github:ryantm/agenix";
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty-hm.url = "github:clo4/ghostty-hm-module";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -22,6 +23,7 @@
 
   outputs =
     {
+      agenix,
       ghostty,
       ghostty-hm,
       nixpkgs,
@@ -73,6 +75,7 @@
             inherit system;
             config.allowUnfree = true;
             overlays = [ (final: prev: {
+              agenix = agenix.packages.${system}.default;
               berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
               ghostty = ghostty.packages.${system}.default;
             }) ];
@@ -96,6 +99,7 @@
                   { ... }:
                   {
                     imports = [
+                      agenix.homeManagerModules.default
                       ghostty-hm.homeModules.default
                       nixvim.homeManagerModules.nixvim
                       ./common/home-configuration.nix
@@ -106,6 +110,7 @@
                 );
               };
             }
+            agenix.nixosModules.default
           ];
         };
     in
