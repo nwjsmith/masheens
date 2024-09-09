@@ -343,7 +343,7 @@
       };
       neogit.enable = true;
       neotest = {
-        enable = false;
+        enable = true;
         adapters = {
           go.enable = true;
           jest.enable = true;
@@ -365,9 +365,11 @@
       };
       treesitter = {
         enable = true;
-        incrementalSelection.enable = true;
-        indent = true;
         nixvimInjections = true;
+        settings = {
+          incremental_selection.enable = true;
+          indent.enable = true;
+        };
       };
       treesitter-textobjects.enable = true;
       trim.enable = true;
