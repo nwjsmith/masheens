@@ -269,7 +269,7 @@
           kotlin-language-server.enable = true;
           nixd.enable = true;
           tsserver.enable = true;
-          # zls.enable = true; FIXME when https://github.com/NixOS/nixpkgs/issues/317055 is fixed
+          # zls.enable = true; #FIXME when https://github.com/NixOS/nixpkgs/issues/317055 is fixed
         };
         keymaps = {
           extra = [
@@ -372,7 +372,7 @@
         };
       };
       treesitter-textobjects.enable = true;
-      trim.enable = true;
+      # trim.enable = true;
       which-key.enable = true;
     };
     viAlias = true;
