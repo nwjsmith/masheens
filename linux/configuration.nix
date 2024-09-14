@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -20,7 +19,6 @@
   i18n.defaultLocale = "en_CA.UTF-8";
 
   nix = {
-    registry.nixpkgs.flake = inputs.nixpkgs;
     settings.experimental-features = [
       "nix-command"
       "flakes"

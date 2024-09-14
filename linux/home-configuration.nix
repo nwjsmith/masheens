@@ -22,11 +22,6 @@
     vlc
   ];
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29-pgtk;
-  };
-
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
@@ -90,6 +85,8 @@
       WantedBy = [ "graphical-session.target" ];
     };
   };
+
+  programs.emacs.package = pkgs.emacs29-pgtk;
 
   home.stateVersion = "23.05";
 }

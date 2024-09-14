@@ -60,6 +60,7 @@
         TrackpadRightClick = true;
       };
     };
+    stateVersion = 5;
   };
 
   services.nix-daemon.enable = true;
@@ -69,14 +70,11 @@
     inter
   ];
 
-  nixpkgs.pkgs = pkgs;
-
   nix = {
     configureBuildUsers = true;
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
     '';
-    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   homebrew = {
@@ -91,6 +89,9 @@
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/core"
+    ];
+    brews = [
+      "aider"
     ];
     casks = [
       "1password"
