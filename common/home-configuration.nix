@@ -21,8 +21,11 @@
     berkeley-mono
     coreutils
     curl
+    fd
     ffmpeg
     localsend
+    pandoc
+    shellcheck
     tokei
   ]);
 
@@ -109,7 +112,6 @@
       cursor-color = "#000000";
       cursor-text = "#ffffff";
       font-family = "Berkeley Mono";
-      font-size = 16;
       foreground = "#000000";
       palette = [
         "0=#ffffff"
