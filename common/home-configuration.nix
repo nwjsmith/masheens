@@ -71,11 +71,22 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
+    git = true;
+    icons = true;
   };
 
   programs.bat = {
     enable = true;
-    config.theme = "ansi";
+    config.theme = "modus_operandi";
+    themes.modus_operandi = {
+      src = pkgs.fetchFromGitHub {
+        owner = "miikanissi";
+        repo = "modus-themes.nvim";
+        rev = "7ba45f2";
+        sha256 = "sha256-pLjQhhxifUY0ibU82bRd6qSNMYwtNZitFSbcOmO18JQ=";
+      };
+      file = "extras/bat/modus_operandi.tmTheme";
+    };
   };
 
   programs.gh = {
@@ -83,7 +94,10 @@
     gitCredentialHelper.enable = true;
   };
 
-  programs.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    extraPackages = (epkgs: [ epkgs.vterm ]);
+  };
 
   home.file.".psqlrc".source = ./psqlrc;
 

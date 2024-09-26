@@ -268,8 +268,8 @@
           graphql.enable = true;
           kotlin-language-server.enable = true;
           nixd.enable = true;
-          tsserver.enable = true;
-          # zls.enable = true; #FIXME when https://github.com/NixOS/nixpkgs/issues/317055 is fixed
+          ts-ls.enable = true;
+          zls.enable = true;
         };
         keymaps = {
           extra = [
@@ -358,7 +358,6 @@
       nix.enable = true;
       oil.enable = true;
       parinfer-rust.enable = true;
-      surround.enable = true;
       telescope = {
         enable = true;
         extensions.fzf-native.enable = true;
@@ -372,8 +371,9 @@
         };
       };
       treesitter-textobjects.enable = true;
-      # trim.enable = true;
+      vim-surround.enable = true;
       which-key.enable = true;
+      web-devicons.enable = true;
     };
     viAlias = true;
     vimAlias = true;
