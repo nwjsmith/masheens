@@ -53,6 +53,7 @@
       description = "Nate Smith";
       home = "/home/nwjsmith";
       extraGroups = [
+        "docker"
         "networkmanager"
         "wheel"
       ];
@@ -99,5 +100,10 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
   };
 }

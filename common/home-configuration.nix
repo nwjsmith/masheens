@@ -105,7 +105,7 @@
 
   programs.emacs = {
     enable = true;
-    extraPackages = (epkgs: [ epkgs.vterm ]);
+    extraPackages = (epkgs: with epkgs; [ treesit-grammars.with-all-grammars vterm ]);
   };
 
   home.file.".psqlrc".source = ./psqlrc;
