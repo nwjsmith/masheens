@@ -2,7 +2,7 @@
 
 {
   programs.nixvim = {
-    colorschemes.modus.enable = true;
+    colorschemes.rose-pine.enable = true;
     enable = true;
     defaultEditor = true;
     globals = {
@@ -223,7 +223,6 @@
     ];
     opts = {
       autowrite = true;
-      background = "light";
       clipboard = "unnamedplus";
       completeopt = "menu,menuone,noselect";
       expandtab = true;
