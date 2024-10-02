@@ -332,7 +332,10 @@
         };
       };
       lsp-lines.enable = true;
-      lualine.enable = true;
+      lualine = {
+        enable = true;
+        settings.options.theme = "rose-pine-alt";
+      };
       luasnip.enable = true;
       mini = {
         enable = true;

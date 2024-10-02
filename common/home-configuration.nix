@@ -78,15 +78,6 @@
   programs.bat = {
     enable = true;
     config.theme = "rosepine";
-    # themes.modus_operandi = {
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "miikanissi";
-    #     repo = "modus-themes.nvim";
-    #     rev = "7ba45f2";
-    #     sha256 = "sha256-pLjQhhxifUY0ibU82bRd6qSNMYwtNZitFSbcOmO18JQ=";
-    #   };
-    #   file = "extras/bat/modus_operandi.tmTheme";
-    # };
     themes.rosepine = {
       src = pkgs.fetchFromGitHub {
         owner = "rose-pine";
@@ -112,30 +103,25 @@
 
   programs.fzf = {
     enable = true;
-    defaultCommand = "${pkgs.fd}/bin/fd --type f";
+    colors = {
+      fg = "#908caa";
+      bg = "#191724";
+      hl = "#ebbcba";
+      "fg+" = "#e0def4";
+      "bg+" = "#26233a";
+      "hl+" = "#ebbcba";
+      border = "#403d52";
+      header = "#31748f";
+      gutter = "#191724";
+      spinner = "#f6c177";
+      info = "#9ccfd8";
+      pointer = "#c4a7e7";
+      marker = "#eb6f92";
+      prompt = "#908caa";
+    };
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
+    defaultCommand = "${pkgs.fd}/bin/fd --type f";
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
-    defaultOptions = [
-      # "--color=fg:#000000,bg:#f9f5d7,hl:#076678"
-      # "--color=fg+:#000000,bg+:#ebdbb2,hl+:#0031a9"
-      # "--color=info:#005e8b"
-      # "--color=border:#9f9f9f"
-      # "--color=header:#193668"
-      # "--color=prompt:#0031a9"
-      # "--color=pointer:#a60000"
-      # "--color=marker:#a60000"
-      # "--color=spinner:#005e8b"
-
-      # "--color=bg+:#ebdbb2,bg:#f9f5d7,spinner:#427b58,hl:#076678"
-      # "--color=fg:#7c6f64,header:#076678,info:#b57614,pointer:#427b58"
-      # "--color=marker:#427b58,fg+:#3c3836,prompt:#b57614,hl+:#076678"
-
-      "--color=fg:#908caa,bg:#191724,hl:#ebbcba"
-	    "--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba"
-	    "--color=border:#403d52,header:#31748f,gutter:#191724"
-	    "--color=spinner:#f6c177,info:#9ccfd8"
-	    "--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
-    ];
   };
 
   programs.ghostty = {
