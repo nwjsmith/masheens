@@ -124,7 +124,7 @@
       "rescuetime"
       "signal"
       "soulver"
-      "steermouse"
+      "spotify"
       "the-unarchiver"
       "tuple"
     ];

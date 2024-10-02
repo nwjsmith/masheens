@@ -33,6 +33,31 @@
 
   programs.jq.enable = true;
 
+  programs.ncspot = {
+    enable = true;
+    settings = {
+      use_nerdfont = true;
+      theme = {
+        background = "#191724";
+        primary = "#e0def4";
+        secondary = "#908caa";
+        title = "#ebbcba";
+        playing = "#9ccfd8";
+        playing_selected = "#31748f";
+        playing_bg = "#26233a";
+        highlight = "#ebbcba";
+        highlight_bg = "#26233a";
+        error = "#eb6f92";
+        error_bg = "#1f1d2e";
+        statusbar = "#e0def4";
+        statusbar_progress = "#f6c177";
+        statusbar_bg = "#26233a";
+        cmdline = "#e0def4";
+        cmdline_bg = "#1f1d2e";
+      };
+    };
+  };
+
   programs.starship = {
     enable = true;
     settings = {
