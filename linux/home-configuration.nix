@@ -64,6 +64,8 @@
 
   };
 
+  services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
+
   systemd.user.services.ulauncher = {
     Unit = {
       Description = "Linux Application Launcher";
