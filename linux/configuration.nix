@@ -41,11 +41,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-  ];
-
   users = {
     mutableUsers = false;
     users.nwjsmith = {

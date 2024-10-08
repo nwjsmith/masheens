@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -13,10 +13,6 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   environment = {
-    systemPackages = with pkgs; [
-      neovim
-      git
-    ];
     shells = with pkgs; [
       bashInteractive
       zsh
@@ -98,6 +94,7 @@
       "alloy"
       "android-studio"
       "bruno"
+      "chatgpt"
       {
         name = "chromium";
         args.no_quarantine = true;
@@ -107,30 +104,24 @@
       "deckset"
       "discord"
       "firefox"
-      "flameshot"
       "intellij-idea"
       "jordanbaird-ice"
       "karabiner-elements"
       "keymapp"
       "monodraw"
-      "movist-pro"
       "obs"
       "obsidian"
       "ollama"
-      "qmk-toolbox"
       "utm"
       "raycast"
-      "reflect"
-      "rescuetime"
       "signal"
       "soulver"
       "spotify"
       "the-unarchiver"
+      "ticktick"
       "tuple"
     ];
     masApps = {
-      "Flow" = 1423210932;
-      "Ivory" = 6444602274;
       "1Password for Safari" = 1569813296;
       "Kindle" = 302584613;
       "Things" = 904280696;
