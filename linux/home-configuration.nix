@@ -16,6 +16,7 @@
     obsidian
     racket
     spotify
+    ticktick
     tlaplusToolbox
     tuba
     ulauncher
@@ -61,7 +62,6 @@
         ];
       }
     ];
-
   };
 
   services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
