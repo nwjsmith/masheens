@@ -5,9 +5,12 @@
 }:
 
 {
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 8;
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 8;
+    };
+    efi.canTouchEfiVariables = true;
   };
 
   networking = {
@@ -94,8 +97,10 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     pulse.enable = true;
   };
 
