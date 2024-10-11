@@ -86,9 +86,6 @@
       "homebrew/cask"
       "homebrew/core"
     ];
-    brews = [
-      "aider"
-    ];
     casks = [
       "1password"
       "alloy"
@@ -114,12 +111,14 @@
       "ollama"
       "utm"
       "raycast"
+      "sf-symbols"
       "signal"
       "soulver"
       "spotify"
       "the-unarchiver"
-      "ticktick"
+      "todoist"
       "tuple"
+      "zed"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

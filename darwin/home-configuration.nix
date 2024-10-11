@@ -9,8 +9,12 @@
 
   programs.ghostty.settings = {
     font-size = 16;
-    macos-non-native-fullscreen = true;
+    # macos-non-native-fullscreen = true;
     macos-titlebar-style = "tabs";
     window-save-state = "never";
   };
+
+  home.sessionPath = [
+    "/Applications/IntelliJ IDEA.app/Contents/MacOS"
+  ];
 }

@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
+    nixcasks = {
+      url = "github:jacekszymanski/nixcasks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
@@ -33,6 +37,7 @@
       ghostty-hm,
       nixpkgs,
       nix-darwin,
+      nixcasks,
       nixvim,
       home-manager,
       ...
@@ -45,7 +50,9 @@
           system:
           f {
             inherit system;
-            pkgs = import nixpkgs { inherit system; };
+            pkgs = import nixpkgs {
+              inherit system;
+            };
           }
         );
       forAllSystems = forSystems [
@@ -78,7 +85,12 @@
 
           pkgs = import nixpkgs {
             inherit system;
-            config.allowUnfree = true;
+            config = {
+              allowUnfree = true;
+              packageOverrides = _: {
+                inherit nixcasks;
+              };
+            };
             overlays = [ (final: prev: {
               agenix = agenix.packages.${system}.default;
               berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};

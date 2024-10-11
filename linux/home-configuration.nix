@@ -16,11 +16,12 @@
     obsidian
     racket
     spotify
-    ticktick
+    todoist
     tlaplusToolbox
     tuba
     ulauncher
     vlc
+    zed-editor
   ];
 
   programs.firefox = {
