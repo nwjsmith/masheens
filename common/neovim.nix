@@ -197,6 +197,31 @@
 
 
     plugins = {
+
+      lsp = {
+        enable = true;
+        keymaps = {
+          extra = [
+            { key = "<Leader>cl"; action = "<Cmd>LspInfo<CR>"; }
+          ];
+
+          lspBuf = {
+            K = "hover";
+            gd = "definition";
+            gD = "references";
+            gi = "implementation";
+            gt = "type_definition";
+            gK = "signature_help";
+            "<Leader>ca" = "code_action";
+          };
+        };
+        servers = {
+          clojure_lsp.enable = true;
+          nil_ls.enable = true;
+          zls.enable = true;
+        };
+      };
+
       conform-nvim = {
         enable = true;
         settings = {
@@ -212,6 +237,8 @@
           formatters.injected.options.ignore_errors = true;
         };
       };
+
+      conjure.enable = true;
 
       telescope = {
         enable = true;

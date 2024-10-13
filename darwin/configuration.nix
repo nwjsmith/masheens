@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -71,6 +71,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes repl-flake
     '';
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   homebrew = {

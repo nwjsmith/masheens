@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 
@@ -23,6 +24,7 @@
       "nix-command"
       "flakes"
     ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
 
   services.openssh = {
