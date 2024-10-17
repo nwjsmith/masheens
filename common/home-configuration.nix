@@ -74,20 +74,20 @@
     enable = true;
     enableZshIntegration = true;
     git = true;
-    icons = true;
+    icons = "auto";
   };
 
   programs.bat = {
     enable = true;
-    config.theme = "rosepine";
-    themes.rosepine = {
+    config.theme = "modus_operandi";
+    themes.modus_operandi = {
       src = pkgs.fetchFromGitHub {
-        owner = "rose-pine";
-        repo = "tm-theme";
-        rev = "c4235f9";
-        sha256 = "sha256-jji8WOKDkzAq8K+uSZAziMULI8Kh7e96cBRimGvIYKY=";
+        owner = "miikanissi";
+        repo = "modus-themes.nvim";
+        rev = "7ba45f2";
+        sha256 = "sha256-pLjQhhxifUY0ibU82bRd6qSNMYwtNZitFSbcOmO18JQ=";
       };
-      file = "dist/themes/rose-pine.tmTheme";
+      file = "extras/bat/modus_operandi.tmTheme";
     };
   };
 
@@ -129,34 +129,33 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      # background = "#ffffff";
-      # cursor-color = "#000000";
-      # cursor-text = "#ffffff";
+      background = "#ffffff";
+      cursor-color = "#000000";
+      cursor-text = "#ffffff";
       font-family = "Berkeley Mono";
-      # foreground = "#000000";
-      # palette = [
-      #   "0=#ffffff"
-      #   "1=#a60000"
-      #   "2=#006800"
-      #   "3=#6f5500"
-      #   "4=#0031a9"
-      #   "5=#721045"
-      #   "6=#005e8b"
-      #   "7=#000000"
-      #   "8=#f2f2f2"
-      #   "9=#d00000"
-      #   "10=#008900"
-      #   "11=#808000"
-      #   "12=#0000ff"
-      #   "13=#dd22dd"
-      #   "14=#008899"
-      #   "15=#595959"
-      #   "16=#884900"
-      #   "17=#7f0000"
-      # ];
+      foreground = "#000000";
+      palette = [
+        "0=#ffffff"
+        "1=#a60000"
+        "2=#006800"
+        "3=#6f5500"
+        "4=#0031a9"
+        "5=#721045"
+        "6=#005e8b"
+        "7=#000000"
+        "8=#f2f2f2"
+        "9=#d00000"
+        "10=#008900"
+        "11=#808000"
+        "12=#0000ff"
+        "13=#dd22dd"
+        "14=#008899"
+        "15=#595959"
+        "16=#884900"
+        "17=#7f0000"
+      ];
       selection-foreground = "#000000";
       selection-background = "#dfa0f0";
-      theme = "rose-pine";
       window-vsync = false;
     };
   };

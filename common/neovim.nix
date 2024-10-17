@@ -9,7 +9,7 @@
     defaultEditor = true;
     enableMan = true;
 
-    colorschemes.rose-pine.enable = true;
+    colorschemes.modus.enable = true;
 
     viAlias = true;
     vimAlias = true;
@@ -197,7 +197,6 @@
 
 
     plugins = {
-
       lsp = {
         enable = true;
         keymaps = {

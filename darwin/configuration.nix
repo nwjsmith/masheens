@@ -59,19 +59,25 @@
     stateVersion = 5;
   };
 
-  services.nix-daemon.enable = true;
-
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     inter
   ];
 
+  services.nix-daemon.enable = true;
+
+  nixpkgs.flake = {
+    setFlakeRegistry = false;
+    setNixPath = false;
+  };
+
   nix = {
     configureBuildUsers = true;
     extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
+      experimental-features = nix-command flakes
     '';
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    settings.auto-optimise-store = true;
   };
 
   homebrew = {
