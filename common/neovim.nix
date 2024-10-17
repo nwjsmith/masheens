@@ -217,7 +217,9 @@
         };
         servers = {
           clojure_lsp.enable = true;
+          gopls.enable = true;
           nil_ls.enable = true;
+          ruby_lsp.enable = true;
           zls.enable = true;
         };
       };

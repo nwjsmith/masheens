@@ -11,14 +11,12 @@
     inter
     jetbrains.idea-community-bin
     keymapp
-    localsend
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     obsidian
     racket
     spotify
-    todoist
+    todoist-electron
     tlaplusToolbox
-    tuba
     ulauncher
     vlc
     zed-editor

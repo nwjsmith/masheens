@@ -14,7 +14,6 @@
 
   networking = {
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 53317 ];
   };
 
   time.timeZone = "America/Toronto";
@@ -67,6 +66,11 @@
     ];
   };
 
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -77,20 +81,11 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  services.displayManager = {
-    autoLogin = {
-      enable = true;
-      user = "nwjsmith";
-    };
-  };
   services.xserver = {
     enable = true;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
   };
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
