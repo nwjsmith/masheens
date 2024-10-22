@@ -241,6 +241,18 @@
 
       conjure.enable = true;
 
+      neotest = {
+        enable = true;
+        adapters = {
+          golang.enable = true;
+          java.enable = true;
+          jest.enable = true;
+          rspec.enable = true;
+          minitest.enable = true;
+          zig.enable = true;
+        };
+      };
+
       telescope = {
         enable = true;
         extensions.fzf-native.enable = true;
@@ -538,6 +550,96 @@
         mode = "n";
         action = "<Cmd>qa<CR>";
         options.desc = "Quit All";
+      }
+      {
+        key = "<Leader>tw";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").watch.toggle(vim.fn.expand("%"))
+          end
+        '';
+        options.desc = "Toggle Watch";
+      }
+      {
+        key = "<Leader>tS";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").run.stop()
+          end
+        '';
+        options.desc = "Stop";
+      }
+      {
+        key = "<Leader>tO";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").output_panel.toggle()
+          end
+        '';
+        options.desc = "Toggle Output Panel";
+      }
+      {
+        key = "<Leader>to";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").output.open({ enter = true, auto_close = true })
+          end
+        '';
+        options.desc = "Show Output";
+      }
+      {
+        key = "<Leader>ts";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").summary.toggle()
+          end
+        '';
+        options.desc = "Toggle Summary";
+      }
+      {
+        key = "<Leader>tt";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").run.run(vim.fn.expand("%"))
+          end
+        '';
+        options.desc = "Run File";
+      }
+      {
+        key = "<Leader>tT";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").run.run(vim.uv.cwd())
+          end
+        '';
+        options.desc = "Run All Test Files";
+      }
+      {
+        key = "<Leader>tr";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").run.run()
+          end
+        '';
+        options.desc = "Run Nearest";
+      }
+      {
+        key = "<Leader>tl";
+        mode = "n";
+        action = helpers.mkRaw ''
+          function()
+            require("neotest").run.run_last()
+          end
+        '';
+        options.desc = "Run Last";
       }
     ];
   };
