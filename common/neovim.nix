@@ -482,8 +482,6 @@
       web-devicons.enable = true;
       which-key.enable = true;
 
-      # TODO replace with neogit
-      fugitive.enable = true;
       oil.enable = true;
     };
 
