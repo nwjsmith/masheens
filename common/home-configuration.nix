@@ -120,20 +120,19 @@
   programs.fzf = {
     enable = true;
     colors = {
-      fg = "#908caa";
-      bg = "#191724";
-      hl = "#ebbcba";
-      "fg+" = "#e0def4";
-      "bg+" = "#26233a";
-      "hl+" = "#ebbcba";
-      border = "#403d52";
-      header = "#31748f";
-      gutter = "#191724";
-      spinner = "#f6c177";
-      info = "#9ccfd8";
-      pointer = "#c4a7e7";
-      marker = "#eb6f92";
-      prompt = "#908caa";
+      fg = "#000000";
+      bg = "#ffffff";
+      hl = "#0031a9";
+      "fg+" = "#000000";
+      "bg+" = "#c4c4c4";
+      "hl+" = "#0031a9";
+      border = "#9f9f9f";
+      header = "#193668";
+      spinner = "#005e8b";
+      info = "#005e8b";
+      pointer = "#a60000";
+      marker = "#a60000";
+      prompt = "#0031a9";
     };
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     defaultCommand = "${pkgs.fd}/bin/fd --type f";
@@ -149,27 +148,33 @@
       font-family = "Berkeley Mono";
       foreground = "#000000";
       palette = [
-        "0=#ffffff"
+        # black
+        "0=#000000"
+        "8=#595959"
+        # red
         "1=#a60000"
+        "9=#972500"
+        # green
         "2=#006800"
+        "10=#00663f"
+        # yellow
         "3=#6f5500"
+        "11=#884900"
+        # blue
         "4=#0031a9"
+        "12=#3548cf"
+        # purple
         "5=#721045"
+        "13=#531ab6"
+        # aqua
         "6=#005e8b"
-        "7=#000000"
-        "8=#f2f2f2"
-        "9=#d00000"
-        "10=#008900"
-        "11=#808000"
-        "12=#0000ff"
-        "13=#dd22dd"
-        "14=#008899"
-        "15=#595959"
-        "16=#884900"
-        "17=#7f0000"
+        "14=#005f5f"
+        # white
+        "7=#a6a6a6"
+        "15=#ffffff"
       ];
       selection-foreground = "#000000";
-      selection-background = "#dfa0f0";
+      selection-background = "#bdbdbd";
       window-vsync = false;
     };
   };
