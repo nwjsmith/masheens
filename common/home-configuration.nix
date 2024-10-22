@@ -31,7 +31,21 @@
     tokei
   ]);
 
-  programs.jujutsu.enable = true;
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      signing = {
+        backend = "gpg";
+        key = "nate@theinternate.com";
+        sign-all = true;
+      };
+      ui.default-command = "log";
+      user = {
+        email = "nate@theinternate.com";
+        name = "Nate Smith";
+      };
+    };
+  };
 
   programs.jq.enable = true;
 
