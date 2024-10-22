@@ -19,7 +19,7 @@
   ] ++ (with pkgs; [
     aider-chat
     agenix
-    berkeley-mono
+    # berkeley-mono
     coreutils
     curl
     devenv

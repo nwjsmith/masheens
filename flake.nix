@@ -93,7 +93,7 @@
             };
             overlays = [ (final: prev: {
               agenix = agenix.packages.${system}.default;
-              berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
+              # berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
               ghostty = ghostty.packages.${system}.default;
             }) ];
           };
