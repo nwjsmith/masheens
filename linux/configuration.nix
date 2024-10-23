@@ -44,6 +44,8 @@
     };
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   users = {
     mutableUsers = false;
     users.nwjsmith = {
