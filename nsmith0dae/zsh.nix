@@ -4,10 +4,6 @@
 }:
 
 {
-  home.sessionVariables = {
-    PAGER = "less -FR";
-  };
-
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
 
   home.file.".local/bin/gem-constraint" = {

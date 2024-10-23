@@ -31,6 +31,10 @@
     tokei
   ]);
 
+  home.sessionVariables = {
+    PAGER = "less -FR";
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
