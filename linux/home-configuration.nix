@@ -8,9 +8,9 @@
   home.packages = with pkgs; [
     _1password-gui
     google-chrome
-    ibm-plex
     inter
     jetbrains.idea-community-bin
+    jetbrains-mono
     keymapp
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     obsidian

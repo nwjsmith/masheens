@@ -159,7 +159,7 @@
       background = "#ffffff";
       cursor-color = "#000000";
       cursor-text = "#ffffff";
-      font-family = "Berkeley Mono";
+      font-family = "JetBrains Mono";
       foreground = "#000000";
       palette = [
         # black
