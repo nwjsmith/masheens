@@ -17,7 +17,7 @@
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
   ] ++ (with pkgs; [
-    aider-chat
+    # aider-chat
     agenix
     # berkeley-mono
     coreutils
