@@ -40,7 +40,7 @@
       foldtext = "";
       formatoptions = "jcroqlnt";
       grepformat = "%f:%l:%c:%m";
-      grepprg = "${pkgs.ripgrep} --vimgrep";
+      grepprg = "${pkgs.ripgrep}/bin/rg --vimgrep";
       ignorecase = true;
       inccommand = "nosplit";
       jumpoptions = "view";
