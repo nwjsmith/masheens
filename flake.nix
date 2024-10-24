@@ -160,7 +160,10 @@
         {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
+              bash-language-server
+              clojure-lsp
               clj-kondo
+              nixd
               nodePackages.prettier
               shellcheck
               treefmt
