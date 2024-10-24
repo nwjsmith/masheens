@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -6,6 +7,12 @@
 
 {
   programs.home-manager.enable = true;
+
+  home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+  home.file.".local/bin/jj-colocate" = {
+    source = ./local/bin/jj-colocate;
+    executable = true;
+  };
 
   imports = [
     ./clojure.nix

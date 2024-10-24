@@ -1,11 +1,8 @@
 {
-  config,
   ...
 }:
 
 {
-  home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-
   home.file.".local/bin/gem-constraint" = {
     source = ./local/bin/gem-constraint;
     executable = true;
