@@ -1,16 +1,90 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Clone a from GitHub repository URL to ~/Code/<organization>/<repository>
+set -euo pipefail
 
-if [[ "$#" -ne 1 ]]; then
-    echo "Usage: $0 <GitHub repository URL>"
-    exit 1
-fi
+usage() {
+    cat << EOF
+Usage: $(basename "$0") [OPTIONS] <repository>
 
-REPO_URL="$1"
-NORMALIZED_URL="${REPO_URL%.git}"
-ORGANIZATION=$(basename "$(dirname "${NORMALIZED_URL}")")
-REPOSITORY=$(basename "${NORMALIZED_URL}")
-TARGET_DIR="${HOME}/Code/${ORGANIZATION}/${REPOSITORY}"
-mkdir -p "${TARGET_DIR}"
-git clone "${REPO_URL%.git}.git" "${TARGET_DIR}"
+Clone a GitHub repository to ~/Code/<organization>/<repository>
+
+Arguments:
+    repository    Either a GitHub URL (https://github.com/organization/repository[.git])
+                 or organization/repository coordinates (organization/repository)
+
+Options:
+    -h, --help   Show this help message
+    --dry-run    Print what would be done without actually cloning
+
+Examples:
+    $(basename "$0") nwjsmith/thumbtack
+    $(basename "$0") https://github.com/nwjsmith/thumbtack
+    $(basename "$0") https://github.com/nwjsmith/thumbtack.git
+EOF
+    exit 0
+}
+
+execute() {
+    if [[ "${dry_run:-false}" = true ]]; then
+        echo "$@"
+    else
+        "$@"
+    fi
+}
+
+main() {
+    local dry_run=false
+    local repository=""
+
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help)
+                usage
+                ;;
+            --dry-run)
+                dry_run=true
+                shift
+                ;;
+            *)
+                if [[ -n "$repository" ]]; then
+                    echo "Error: Multiple repository arguments provided" >&2
+                    exit 1
+                fi
+                repository="$1"
+                shift
+                ;;
+        esac
+    done
+
+    if [[ -z "$repository" ]]; then
+        echo "Error: No repository specified" >&2
+        echo "Try '$(basename "$0") --help' for usage information" >&2
+        exit 1
+    fi
+
+    local organization="" name=""
+    if [[ "$repository" =~ ^https://github.com/([^/]+)/([^/]+?)(?:\.git)?$ ]]; then
+        organization="${BASH_REMATCH[1]}"
+        name="${BASH_REMATCH[2]}"
+    elif [[ "$repository" =~ ^([^/]+)/([^/]+)$ ]]; then
+        organization="${BASH_REMATCH[1]}"
+        name="${BASH_REMATCH[2]}"
+    else
+        echo "Error: Invalid repository format" >&2
+        echo "Expected either 'organization/repository' or 'https://github.com/organization/repository[.git]'" >&2
+        exit 1
+    fi
+
+    local target="$HOME/Code/$organization/$name"
+    local url="https://github.com/$organization/$name.git"
+
+    if [[ -d "$target" ]]; then
+        echo "Repository already exists at $target"
+        exit 0
+    fi
+
+    execute mkdir -p "$(dirname "$target")"
+    execute git clone "$url" "$target"
+}
+
+main "$@"
