@@ -50,7 +50,10 @@
         key = "nate@theinternate.com";
         sign-all = true;
       };
-      ui.default-command = "log";
+      ui = {
+        diff-editor = ":builtin";
+        default-command = "log";
+      };
       user = {
         email = "nate@theinternate.com";
         name = "Nate Smith";
