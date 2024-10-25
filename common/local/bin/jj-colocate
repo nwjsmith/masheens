@@ -128,6 +128,7 @@ main() {
     dry_runnable "jj --repository \"${git_root}\" config set --repo aliases.sync -- \"[\\\"rebase\\\", \\\"--source\\\", \\\"all:roots(${default_branch}..@)\\\", \\\"--destination\\\", \\\"${default_branch}\\\"]\""
     if is_work_repo; then
         dry_runnable "jj --repository \"${git_root}\" config set --repo user.email \"${WORK_EMAIL}\""
+        dry_runnable "jj describe --reset-author --no-edit"
     fi
 }
 
