@@ -153,6 +153,11 @@
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
   };
 
+  programs.btop = {
+    enable = true;
+    settings.color_theme = "whiteout";
+  };
+
   programs.ghostty = {
     enable = true;
     settings = {
