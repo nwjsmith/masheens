@@ -20,8 +20,29 @@
     tlaplusToolbox
     ulauncher
     vlc
-    zed-editor
   ];
+
+  programs.zed-editor = {
+    enable = true;
+    package = pkgs.nixcasks.zed;
+    extensions = [
+      "docker-compose"
+      "dockerfile"
+      "elisp"
+      "env"
+      "git-firefly"
+      "graphql"
+      "helm"
+      "just"
+      "kotlin"
+      "make"
+      "mermaid"
+      "nix"
+      "ruby"
+      "sql"
+      "xml"
+    ];
+  };
 
   programs.firefox = {
     enable = true;
