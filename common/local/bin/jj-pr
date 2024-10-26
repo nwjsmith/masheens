@@ -1,0 +1,166 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: $(basename "$0") [-h|--help] [-n|--dry-run] [--no-create] [--no-draft] [<revision>]"
+    echo
+    echo "Updates GitHub PR title and body from a Jujutsu revision's description."
+    echo "If no PR exists, pushes the change and creates one unless --no-create is specified."
+    echo "New PRs are created as drafts unless --no-draft is specified."
+    echo "If no revision is specified, @ is used."
+    echo
+    echo "Options:"
+    echo "  -h, --help     Show this help message"
+    echo "  -n, --dry-run  Dry run (print changes without updating PR)"
+    echo "      --no-create  Don't create PR if none exists"
+    echo "      --no-draft   Don't create PR as draft"
+    exit "${1:-0}"
+}
+
+die() {
+    echo "ERROR: $*" >&2
+    exit 1
+}
+
+description() {
+    local rev="$1"
+    jj log --no-graph --no-pager --quiet --template 'self.description()' --revisions "${rev}" ||
+        die "Failed to get revision description"
+}
+
+get_tracking_branch() {
+    local rev="$1"
+    jj bookmark list --template "if(tracking_present, name)" --revisions "${rev}" ||
+        die "Failed to get tracking branch"
+}
+
+update_pr() {
+    local branch="$1"
+    local title="$2"
+    local body="$3"
+    local dry_run="$4"
+
+    if [ "${dry_run}" = "true" ]; then
+        echo "Would update PR for branch '${branch}' with:"
+        echo "Title: ${title}"
+        echo "Body:"
+        echo "${body}"
+    else
+        printf "%s" "${body}" |
+            gh pr edit "${branch}" --title "${title}" --body-file - ||
+            die "Failed to update PR for branch '${branch}'"
+    fi
+}
+
+create_pr() {
+    local revision="$1"
+    local title="$2"
+    local body="$3"
+    local dry_run="$4"
+    local draft="$5"
+
+    if [ "${dry_run}" = "true" ]; then
+        echo "Would push changes and create $([ "${draft}" = "true" ] && echo "draft ")PR with:"
+        echo "Title: ${title}"
+        echo "Body:"
+        echo "${body}"
+    else
+        jj git push --change "${revision}" || die "Failed to push changes"
+
+        local branch
+        branch=$(get_tracking_branch "${revision}") || die "Failed to get branch after push"
+        [ -z "${branch}" ] && die "No branch created after push"
+
+        local draft_flag=""
+        [ "${draft}" = "true" ] && draft_flag="--draft"
+
+        printf "%s" "${body}" |
+            gh pr create --title "${title}" --body-file - ${draft_flag} ||
+            die "Failed to create PR for branch '${branch}'"
+
+        echo "Successfully created$([ "${draft}" = "true" ] && echo " draft") PR for branch '${branch}'"
+    fi
+}
+
+main() {
+    local dry_run="false"
+    local no_create="false"
+    local draft="true"
+    local revision="@"
+
+    while :; do
+        case "${1:-}" in
+            -h|--help)
+                usage
+                ;;
+            -n|--dry-run)
+                dry_run="true"
+                ;;
+            --no-create)
+                no_create="true"
+                ;;
+            --no-draft)
+                draft="false"
+                ;;
+            -*)
+                usage 1
+                ;;
+            *)
+                if [ -n "${1:-}" ]; then
+                    revision="$1"
+                fi
+                break
+                ;;
+        esac
+        shift
+    done
+
+    shift $((OPTIND-1))
+
+    if ! command -v gh >/dev/null 2>&1; then
+        die "GitHub CLI (gh) is not installed"
+    fi
+
+    if ! command -v jj >/dev/null 2>&1; then
+        die "Jujutsu (jj) is not installed"
+    fi
+
+    local desc
+    desc=$(description "${revision}")
+
+    local title
+    title=$(echo "${desc}" | head -n 1 | sed 's/`/\\`/g')
+
+    local body
+    body=$(echo "${desc}" | tail -n +3)
+
+    if [ -z "${title}" ]; then
+        die "Empty PR title"
+    fi
+
+    local branch
+    branch=$(get_tracking_branch "${revision}")
+
+    if [ -z "${branch}" ]; then
+        if [ "${no_create}" = "true" ]; then
+            echo "No branch is currently being tracked and --no-create was specified"
+            exit 0
+        fi
+        create_pr "${revision}" "${title}" "${body}" "${dry_run}" "${draft}"
+    else
+        if ! gh pr view "${branch}" >/dev/null 2>&1; then
+            if [ "${no_create}" = "true" ]; then
+                die "No pull request found for branch '${branch}' and --no-create was specified"
+            fi
+            create_pr "${revision}" "${title}" "${body}" "${dry_run}" "${draft}"
+        else
+            update_pr "${branch}" "${title}" "${body}" "${dry_run}"
+            if [ "${dry_run}" = "false" ]; then
+                echo "Successfully updated PR for branch '${branch}'"
+            fi
+        fi
+    fi
+}
+
+main "$@"

@@ -13,6 +13,10 @@
     source = ./local/bin/jj-colocate;
     executable = true;
   };
+  home.file.".local/bin/jj-pr" = {
+    source = ./local/bin/jj-pr;
+    executable = true;
+  };
 
   imports = [
     ./clojure.nix
