@@ -26,6 +26,8 @@
     enable = true;
     package = pkgs.nixcasks.zed;
     extensions = [
+      "clojure"
+      "deno"
       "docker-compose"
       "dockerfile"
       "elisp"
@@ -33,14 +35,19 @@
       "git-firefly"
       "graphql"
       "helm"
+      "html"
       "just"
       "kotlin"
+      "lua"
       "make"
       "mermaid"
       "nix"
       "ruby"
       "sql"
+      "terraform"
+      "toml"
       "xml"
+      "zig"
     ];
   };
 
