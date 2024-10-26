@@ -88,7 +88,7 @@
             config = {
               allowUnfree = true;
               packageOverrides = _: {
-                inherit nixcasks;
+                nixcasks = (nixcasks.output { osVersion = "sonoma"; }).packages.${system};
               };
             };
             overlays = [ (final: prev: {
