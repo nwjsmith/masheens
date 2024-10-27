@@ -36,6 +36,7 @@
     devenv
     fd
     ffmpeg
+    jetbrains-mono
     localsend
     pandoc
     shellcheck
