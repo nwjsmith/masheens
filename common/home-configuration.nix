@@ -170,6 +170,7 @@
       cursor-color = "#000000";
       cursor-text = "#ffffff";
       font-family = "JetBrains Mono";
+      font-feature = "-calt";
       foreground = "#000000";
       palette = [
         # black
