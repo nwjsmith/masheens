@@ -31,7 +31,7 @@ description() {
 
 get_tracking_branch() {
     local rev="$1"
-    jj bookmark list --template "if(tracking_present, name)" --revisions "${rev}" ||
+    jj bookmark list --tracked --template "if(tracking_present, name)" --revisions "${rev}" ||
         die "Failed to get tracking branch"
 }
 
@@ -76,7 +76,8 @@ create_pr() {
         [ "${draft}" = "true" ] && draft_flag="--draft"
 
         printf "%s" "${body}" |
-            gh pr create --title "${title}" --body-file - ${draft_flag} ||
+            prettier --parser=markdown --prose-wrap never |
+            gh pr create --head "${branch}" --title "${title}" --body-file - ${draft_flag} ||
             die "Failed to create PR for branch '${branch}'"
 
         echo "Successfully created$([ "${draft}" = "true" ] && echo " draft") PR for branch '${branch}'"
@@ -124,6 +125,10 @@ main() {
 
     if ! command -v jj >/dev/null 2>&1; then
         die "Jujutsu (jj) is not installed"
+    fi
+
+    if ! command -v prettier >/dev/null 2>&1; then
+        die "prettier is not installed"
     fi
 
     local desc
