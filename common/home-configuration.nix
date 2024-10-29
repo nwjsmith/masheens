@@ -38,7 +38,6 @@
     ffmpeg
     jetbrains-mono
     localsend
-    nodePackages.prettier
     pandoc
     shellcheck
     tokei

@@ -76,7 +76,6 @@ create_pr() {
         [ "${draft}" = "true" ] && draft_flag="--draft"
 
         printf "%s" "${body}" |
-            prettier --parser=markdown --prose-wrap never |
             gh pr create --head "${branch}" --title "${title}" --body-file - ${draft_flag} ||
             die "Failed to create PR for branch '${branch}'"
 
@@ -125,10 +124,6 @@ main() {
 
     if ! command -v jj >/dev/null 2>&1; then
         die "Jujutsu (jj) is not installed"
-    fi
-
-    if ! command -v prettier >/dev/null 2>&1; then
-        die "prettier is not installed"
     fi
 
     local desc
