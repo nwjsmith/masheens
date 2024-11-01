@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+print_usage() {
+    cat << EOF
+Usage: $(basename "$0") <bookmark> [--dry-run]
+
+Merge a PR associated with a Jujutsu bookmark using GitHub CLI.
+
+Arguments:
+    bookmark        The Jujutsu bookmark to merge
+    -h, --help     Show this help message
+    --dry-run      Print commands without executing them
+EOF
+    exit 0
+}
+
+get_commit_for_bookmark() {
+    local bookmark=$1
+    jj log --revision "$bookmark" --no-graph --template 'self.commit_id()' 2>/dev/null
+}
+
+execute() {
+    if [[ "${DRY_RUN:-}" == "true" ]]; then
+        echo "$*"
+    else
+        "$@"
+    fi
+}
+
+main() {
+    if [[ $# -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+        print_usage
+    fi
+
+    local bookmark=$1
+    shift
+
+    if [[ "${1:-}" == "--dry-run" ]]; then
+        DRY_RUN=true
+        shift
+    fi
+
+    local commit
+    commit=$(get_commit_for_bookmark "$bookmark")
+
+    if [[ -z "$commit" ]]; then
+        echo "Error: Could not find commit for bookmark '$bookmark'" >&2
+        exit 1
+    fi
+
+    execute gh pr merge --squash "$bookmark" --match-head-commit "$commit"
+}
+
+main "$@"

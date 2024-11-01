@@ -17,6 +17,10 @@
     source = ./local/bin/jj-pr;
     executable = true;
   };
+  home.file.".local/bin/jj-merge" = {
+    source = ./local/bin/jj-merge;
+    executable = true;
+  };
 
   imports = [
     ./clojure.nix
