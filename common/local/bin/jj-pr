@@ -83,6 +83,17 @@ create_pr() {
     fi
 }
 
+blockers() {
+    local revision="$1"
+    jj log --no-graph --template 'self.remote_bookmarks() ++ "\n"' --revisions "trunk()..${revision}-" |
+        grep --extended-regexp --only-matching '[^\s].+@origin' |
+        cut -d'@' -f1 |
+        while read -r branch; do
+            gh pr view ${branch} --json number --template '
+Blocked by #{{ .number }}'
+        done || echo -n ""
+}
+
 main() {
     local dry_run="false"
     local no_create="false"
@@ -130,10 +141,14 @@ main() {
     desc=$(description "${revision}")
 
     local title
-    title=$(echo "${desc}" | head -n 1 | sed 's/`/\\`/g')
+    title=$(echo "${desc}" | head -n 1)
+
+    local pull_description
+    pull_description=$(echo "${desc}" | tail -n +3)
 
     local body
-    body=$(echo "${desc}" | tail -n +3)
+    body="${pull_description}
+$(blockers "${revision}")"
 
     if [ -z "${title}" ]; then
         die "Empty PR title"
