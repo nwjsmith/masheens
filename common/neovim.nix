@@ -4,7 +4,7 @@
   programs.nixvim = let
     helpers = config.lib.nixvim;
   in {
-    enable = true;
+    enable = false;
 
     defaultEditor = true;
     enableMan = true;
