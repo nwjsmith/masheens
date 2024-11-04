@@ -54,6 +54,15 @@
   programs.jujutsu = {
     enable = true;
     settings = {
+      aliases = {
+        sync = [
+          "rebase"
+          "--source"
+          "all:roots(trunk()..@)"
+          "--destination"
+          "trunk()"
+        ];
+      };
       signing = {
         backend = "gpg";
         key = "nate@theinternate.com";
