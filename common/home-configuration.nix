@@ -40,6 +40,7 @@
     devenv
     fd
     ffmpeg
+    fh
     jetbrains-mono
     localsend
     pandoc
