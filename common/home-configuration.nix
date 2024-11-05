@@ -214,6 +214,7 @@
       ];
       selection-foreground = "#000000";
       selection-background = "#bdbdbd";
+      shellIntegration.enable = true;
       window-vsync = false;
     };
   };
