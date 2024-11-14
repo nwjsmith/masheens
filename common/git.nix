@@ -7,6 +7,10 @@
     enable = true;
     userEmail = "nate@theinternate.com";
     userName = "Nate Smith";
+    delta = {
+      enable = true;
+      options.syntax-theme = "modus_operandi";
+    };
     aliases = {
       co = "checkout";
       dc = "diff --cached";

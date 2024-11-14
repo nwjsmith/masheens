@@ -70,8 +70,13 @@
         sign-all = true;
       };
       ui = {
-        diff-editor = ":builtin";
         default-command = "log";
+        diff-editor = ":builtin";
+        diff.format = "git";
+        pager = [
+          "${pkgs.delta}/bin/delta"
+          "--line-numbers"
+        ];
       };
       user = {
         email = "nate@theinternate.com";
