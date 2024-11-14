@@ -9,6 +9,7 @@
       "google-chrome"
       "notion"
       "notion-calendar"
+      "orbstack"
       "slack"
       "zoom"
     ];

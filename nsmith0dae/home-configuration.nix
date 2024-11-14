@@ -13,7 +13,6 @@
 
   home.packages = with pkgs; [
     amazon-ecr-credential-helper
-    colima
     awscli2
     docker-client
     docker-compose
