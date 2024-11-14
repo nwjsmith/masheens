@@ -18,7 +18,6 @@
     docker-compose
     docker-credential-helpers
     nodePackages.mermaid-cli
-    yt-dlp
     libyaml
   ];
 

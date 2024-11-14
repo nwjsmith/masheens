@@ -221,4 +221,5 @@
       window-vsync = false;
     };
   };
+  programs.yt-dlp.enable = true;
 }
