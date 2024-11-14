@@ -77,7 +77,6 @@
       experimental-features = nix-command flakes
     '';
     registry.nixpkgs.flake = inputs.nixpkgs;
-    settings.auto-optimise-store = true;
   };
 
   homebrew = {

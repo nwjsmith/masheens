@@ -112,7 +112,6 @@
       highlight = "fg=#595959";
     };
     enableCompletion = true;
-    enableVteIntegration = true;
     initExtra = ''
       setopt interactive_comments
       export DIRENV_LOG_FORMAT=""
@@ -219,7 +218,6 @@
       ];
       selection-foreground = "#000000";
       selection-background = "#bdbdbd";
-      shellIntegration.enable = true;
       window-vsync = false;
     };
   };
