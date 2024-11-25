@@ -2,9 +2,6 @@
 
 set -euo pipefail
 
-WORK_EMAIL="${WORK_EMAIL:-nsmith@wealthsimple.com}"
-WORK_GITHUB_ORG="${WORK_GITHUB_ORG:-github.com/wealthsimple}"
-
 print_usage() {
     cat << EOF
 Usage: $(basename "$0") [--help] [--dry-run]
@@ -53,12 +50,6 @@ is_on_default_branch() {
 
 get_default_branch() {
     git remote show origin 2>/dev/null | grep 'HEAD branch' | cut -d' ' -f5 || echo "main"
-}
-
-is_work_repo() {
-    local remote_url
-    remote_url=$(git remote get-url origin 2>/dev/null || echo "")
-    [[ ${remote_url} == *"${WORK_GITHUB_ORG}"* ]]
 }
 
 is_jj_initialized() {
@@ -125,10 +116,8 @@ main() {
 
     dry_runnable "jj git init --colocate \"${git_root}\""
     dry_runnable "jj --repository \"${git_root}\" bookmark track \"${default_branch}@origin\""
-    if is_work_repo; then
-        dry_runnable "jj --repository \"${git_root}\" config set --repo user.email \"${WORK_EMAIL}\""
-        dry_runnable "jj describe --reset-author --no-edit"
-    fi
+    dry_runnable "jj --repository \"${git_root}\" config set --repo user.email "$(git -C ${git_root} config user.email)""
+    dry_runnable "jj describe --reset-author --no-edit"
 }
 
 main "$@"
