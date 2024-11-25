@@ -111,6 +111,7 @@
       "jordanbaird-ice"
       "karabiner-elements"
       "keymapp"
+      "logi-options+"
       "monodraw"
       "obs"
       "obsidian"
