@@ -7,9 +7,7 @@
   ];
 
   environment.variables = {
-    EDITOR = "nvim";
-    MANPAGER = "nvim +Man!";
+    EDITOR = "vim";
     MANWIDTH = "999";
-    VISUAL = "nvim";
   };
 }

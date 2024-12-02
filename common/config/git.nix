@@ -20,6 +20,7 @@
         gpgsign = true;
         template = "${config.xdg.configHome}/git/gitmessage";
       };
+      core.editor = "zed --wait";
       fetch.prune = true;
       github.user = "nwjsmith";
       init.defaultBranch = "main";

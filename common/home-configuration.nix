@@ -32,12 +32,9 @@
   home.packages = [
     (pkgs.ripgrep.override { withPCRE2 = true; })
   ] ++ (with pkgs; [
-    # aider-chat
     agenix
-    # berkeley-mono
     coreutils
     curl
-    devenv
     fd
     ffmpeg
     fh
@@ -50,6 +47,9 @@
 
   home.sessionVariables = {
     PAGER = "less -FR";
+    EDITOR = "nvim";
+    VISUAL = "zed --wait";
+    MANPAGER = "nvim +Man!";
   };
 
   programs.jujutsu = {
