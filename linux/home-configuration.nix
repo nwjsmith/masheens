@@ -11,7 +11,7 @@
     inter
     jetbrains.idea-community-bin
     keymapp
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.symbols-only
     obsidian
     racket
     spotify
