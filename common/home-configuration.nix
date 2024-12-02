@@ -52,6 +52,73 @@
     MANPAGER = "nvim +Man!";
   };
 
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "clojure"
+      "deno"
+      "docker-compose"
+      "dockerfile"
+      "elisp"
+      "env"
+      "git-firefly"
+      "graphql"
+      "helm"
+      "html"
+      "just"
+      "kotlin"
+      "lua"
+      "make"
+      "mermaid"
+      "nix"
+      "ruby"
+      "sql"
+      "terraform"
+      "toml"
+      "xml"
+      "zig"
+    ];
+    userSettings = {
+      assistant = {
+        default_model = {
+          provider = "zed.dev";
+          model = "claude-3-5-sonnet-latest";
+        };
+        version = "2";
+      };
+      buffer_font = "JetBrains Mono";
+      buffer_font_fallbacks = ["Symbols Nerd Font Mono"];
+      buffer_font_features.calt = false;
+      buffer_font_size = 16;
+      file_scan_exclusions = [
+        "**/.DS_Store"
+        "**/.classpath"
+        "**/.direnv"
+        "**/.git"
+        "**/.hg"
+        "**/.settings"
+        "**/.svn"
+        "**/CVS"
+        "**/Thumbs.db"
+      ];
+      git.git_gutter = "hide";
+      languages = {
+        "Nix".tab_size = 2;
+      };
+      load_direnv = "shell_hook";
+      project_panel.git_status = false;
+      scrollbar.git_diff = false;
+      terminal.font_features.calt = false;
+      theme = {
+        mode = "system";
+        light = "One Light";
+        dark = "One Dark";
+      };
+      ui_font_size = 16;
+      vim_mode = true;
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
