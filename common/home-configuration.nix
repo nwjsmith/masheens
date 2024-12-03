@@ -86,6 +86,7 @@
         };
         version = "2";
       };
+      auto_update = false;
       buffer_font = "JetBrains Mono";
       buffer_font_fallbacks = ["Symbols Nerd Font Mono"];
       buffer_font_features.calt = false;
