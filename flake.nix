@@ -164,7 +164,7 @@
               bash-language-server
               clojure-lsp
               clj-kondo
-              nixd
+              nil
               nodePackages.prettier
               shellcheck
               treefmt
