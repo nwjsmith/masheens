@@ -94,6 +94,7 @@
             overlays = [ (final: prev: {
               agenix = agenix.packages.${system}.default;
               # berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
+              oracle-instantclient = prev.callPackage ./pkgs/oracle-instantclient.nix {};
               ghostty = ghostty.packages.${system}.default;
             }) ];
           };
