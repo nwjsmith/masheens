@@ -112,6 +112,7 @@
       "karabiner-elements"
       "keymapp"
       "logi-options+"
+      "meetingbar"
       "monodraw"
       "obs"
       "obsidian"
