@@ -29,21 +29,23 @@
     ./neovim.nix
   ];
 
-  home.packages = [
-    (pkgs.ripgrep.override { withPCRE2 = true; })
-  ] ++ (with pkgs; [
-    agenix
-    coreutils
-    curl
-    fd
-    ffmpeg
-    fh
-    jetbrains-mono
-    localsend
-    pandoc
-    shellcheck
-    tokei
-  ]);
+  home.packages =
+    [
+      (pkgs.ripgrep.override { withPCRE2 = true; })
+    ]
+    ++ (with pkgs; [
+      agenix
+      coreutils
+      curl
+      fd
+      ffmpeg
+      fh
+      jetbrains-mono
+      localsend
+      pandoc
+      shellcheck
+      tokei
+    ]);
 
   home.sessionVariables = {
     PAGER = "less -FR";
@@ -88,7 +90,7 @@
       };
       auto_update = false;
       buffer_font = "JetBrains Mono";
-      buffer_font_fallbacks = ["Symbols Nerd Font Mono"];
+      buffer_font_fallbacks = [ "Symbols Nerd Font Mono" ];
       buffer_font_features.calt = false;
       buffer_font_size = 16;
       file_scan_exclusions = [
@@ -133,9 +135,22 @@
         ];
       };
       mergetools.opendiff = {
-        diff-args = ["$left" "$right"];
-        edit-args = ["$left" "$right" "-merge" "$output"];
-        merge-args = ["$left" "$right" "-ancestor $base" "-merge $output"];
+        diff-args = [
+          "$left"
+          "$right"
+        ];
+        edit-args = [
+          "$left"
+          "$right"
+          "-merge"
+          "$output"
+        ];
+        merge-args = [
+          "$left"
+          "$right"
+          "-ancestor $base"
+          "-merge $output"
+        ];
       };
       signing = {
         backend = "ssh";
@@ -221,7 +236,12 @@
 
   programs.emacs = {
     enable = true;
-    extraPackages = (epkgs: with epkgs; [ treesit-grammars.with-all-grammars vterm ]);
+    extraPackages = (
+      epkgs: with epkgs; [
+        treesit-grammars.with-all-grammars
+        vterm
+      ]
+    );
   };
 
   home.file.".psqlrc".source = ./psqlrc;

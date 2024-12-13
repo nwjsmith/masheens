@@ -30,7 +30,11 @@ stdenv.mkDerivation {
     })
   ];
 
-  outputs = [ "out" "dev" "lib" ];
+  outputs = [
+    "out"
+    "dev"
+    "lib"
+  ];
 
   nativeBuildInputs = [
     _7zz
