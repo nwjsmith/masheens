@@ -6,26 +6,15 @@
 }:
 
 {
-  programs.zsh = {
-    enable = true;
-    enableBashCompletion = false;
-    enableCompletion = false;
-    loginShellInit = ''
-      eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
-    '';
-  };
-
   security.pam.enableSudoTouchIdAuth = true;
 
   environment = {
     shells = with pkgs; [
-      bashInteractive
-      zsh
+      fish
     ];
-    variables = {
-      SHELL = "${pkgs.zsh}/bin/zsh";
-    };
   };
+
+  programs.fish.enable = true;
 
   system = {
     defaults = {

@@ -22,6 +22,37 @@
     executable = true;
   };
 
+  programs.fish = {
+    enable = true;
+    functions = {
+      fish_greeting = "";
+      fish_prompt = ''
+        if test "$status" -ne 0
+            set -f prompt_colour red
+        else
+            set -f prompt_colour green
+        end
+        if test "$CMD_DURATION" -gt 1000
+            set -f duration " took " (set_color yellow) (math --scale 2 $CMD_DURATION / 1000) "s" (set_color normal)
+        else
+            set -f duration ""
+        end
+        string join "" -- (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $duration \n (set_color $prompt_colour) "❯" (set_color normal) " "
+      '';
+    };
+    plugins = [
+      {
+        name = "z";
+        src = pkgs.fetchFromGitHub {
+          owner = "jethrokuan";
+          repo = "z";
+          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+          sha256 = "sha256-+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
+        };
+      }
+    ];
+  };
+
   imports = [
     ./clojure.nix
     ./git.nix
@@ -174,43 +205,41 @@
 
   programs.jq.enable = true;
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = lib.concatStrings [
-        "$directory"
-        "$cmd_duration"
-        "$line_break"
-        "$character"
-      ];
-    };
-  };
+  # programs.starship = {
+  #   enable = true;
+  #   settings = {
+  #     format = lib.concatStrings [
+  #       "$directory"
+  #       "$cmd_duration"
+  #       "$line_break"
+  #       "$character"
+  #     ];
+  #   };
+  # };
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
     nix-direnv.enable = true;
   };
 
-  programs.zsh = {
-    enable = true;
-    autosuggestion = {
-      enable = true;
-      highlight = "fg=#595959";
-    };
-    enableCompletion = true;
-    initExtra = ''
-      setopt interactive_comments
-      export DIRENV_LOG_FORMAT=""
-    '';
-    syntaxHighlighting.enable = true;
-  };
+  # programs.zsh = {
+  #   enable = true;
+  #   autosuggestion = {
+  #     enable = true;
+  #     highlight = "fg=#595959";
+  #   };
+  #   enableCompletion = true;
+  #   initExtra = ''
+  #     setopt interactive_comments
+  #     export DIRENV_LOG_FORMAT=""
+  #   '';
+  #   syntaxHighlighting.enable = true;
+  # };
 
   programs.zoxide.enable = true;
 
   programs.eza = {
     enable = true;
-    enableZshIntegration = true;
     git = true;
     icons = "auto";
   };
