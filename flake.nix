@@ -3,6 +3,7 @@
 
   inputs = {
     agenix.url = "github:ryantm/agenix";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs = {
@@ -33,6 +34,7 @@
   outputs =
     {
       agenix,
+      determinate,
       ghostty,
       ghostty-hm,
       nixpkgs,
@@ -85,17 +87,10 @@
 
           pkgs = import nixpkgs {
             inherit system;
-            config = {
-              allowUnfree = true;
-              packageOverrides = _: {
-                nixcasks = (nixcasks.output { osVersion = "sonoma"; }).packages.${system};
-              };
-            };
+            config.allowUnfree = true;
             overlays = [
               (final: prev: {
                 agenix = agenix.packages.${system}.default;
-                # berkeley-mono = prev.callPackage ./pkgs/berkeley-mono.nix {};
-                oracle-instantclient = prev.callPackage ./pkgs/oracle-instantclient.nix { };
                 ghostty = ghostty.packages.${system}.default;
               })
             ];
@@ -131,6 +126,7 @@
               };
             }
             agenix.nixosModules.default
+            determinate.darwinModules.default
           ];
         };
     in

@@ -58,21 +58,6 @@
     inter
   ];
 
-  services.nix-daemon.enable = true;
-
-  nixpkgs.flake = {
-    setFlakeRegistry = false;
-    setNixPath = false;
-  };
-
-  nix = {
-    configureBuildUsers = true;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    registry.nixpkgs.flake = inputs.nixpkgs;
-  };
-
   homebrew = {
     enable = true;
     onActivation = {
