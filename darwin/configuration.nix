@@ -105,6 +105,7 @@
       "the-unarchiver"
       "todoist"
       "tuple"
+      "zed"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
