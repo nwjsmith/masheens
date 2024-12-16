@@ -253,7 +253,6 @@
       ];
       selection-foreground = "#000000";
       selection-background = "#bdbdbd";
-      window-vsync = false;
     };
   };
 
