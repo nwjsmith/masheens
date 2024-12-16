@@ -22,10 +22,20 @@
     executable = true;
   };
 
-  programs.fish = {
+  programs.fish = let
+    modusTheme = builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/miikanissi/modus-themes.nvim/35980f19daef4745c96f1cb292d484fb1f33f822/extras/fish/modus_operandi.fish";
+      sha256 = "sha256:0l3k2jkv2gd4mwbnpq2mq13hrb67wdk7mkq37z58lxl861zpmabq";
+    };
+  in {
     enable = true;
+    interactiveShellInit = ''
+      fish_vi_key_bindings
+      source ${modusTheme}
+    '';
     functions = {
       fish_greeting = "";
+      fish_mode_prompt = "";
       fish_prompt = ''
         if test "$status" -ne 0
             set -f prompt_colour red
@@ -40,17 +50,6 @@
         string join "" -- (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $duration \n (set_color $prompt_colour) "❯" (set_color normal) " "
       '';
     };
-    plugins = [
-      {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "sha256-+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-        };
-      }
-    ];
   };
 
   imports = [
@@ -119,36 +118,10 @@
 
   programs.jq.enable = true;
 
-  # programs.starship = {
-  #   enable = true;
-  #   settings = {
-  #     format = lib.concatStrings [
-  #       "$directory"
-  #       "$cmd_duration"
-  #       "$line_break"
-  #       "$character"
-  #     ];
-  #   };
-  # };
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
-
-  # programs.zsh = {
-  #   enable = true;
-  #   autosuggestion = {
-  #     enable = true;
-  #     highlight = "fg=#595959";
-  #   };
-  #   enableCompletion = true;
-  #   initExtra = ''
-  #     setopt interactive_comments
-  #     export DIRENV_LOG_FORMAT=""
-  #   '';
-  #   syntaxHighlighting.enable = true;
-  # };
 
   programs.zoxide.enable = true;
 
