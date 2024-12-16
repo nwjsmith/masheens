@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   ...
 }:
@@ -12,9 +11,7 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking = {
-    networkmanager.enable = true;
-  };
+  networking.networkmanager.enable = true;
 
   time.timeZone = "America/Toronto";
 
@@ -36,6 +33,7 @@
     };
   };
 
+  hardware.keyboard.qmk.enable = true;
   services.keyd = {
     enable = true;
     keyboards.default = {
@@ -43,8 +41,6 @@
       settings.main.capslock = "overload(control, esc)";
     };
   };
-
-  hardware.keyboard.qmk.enable = true;
 
   users = {
     mutableUsers = false;
