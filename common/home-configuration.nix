@@ -165,24 +165,6 @@
           "trunk()"
         ];
       };
-      mergetools.opendiff = {
-        diff-args = [
-          "$left"
-          "$right"
-        ];
-        edit-args = [
-          "$left"
-          "$right"
-          "-merge"
-          "$output"
-        ];
-        merge-args = [
-          "$left"
-          "$right"
-          "-ancestor $base"
-          "-merge $output"
-        ];
-      };
       signing = {
         backend = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtWR1nXAvSmsd92TC9rMuZIh1Ec8cqxYr3BIyUxdNyy";
