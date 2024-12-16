@@ -97,6 +97,7 @@
       "obsidian"
       "ollama"
       "utm"
+      "raindropio"
       "raycast"
       "sf-symbols"
       "signal"
