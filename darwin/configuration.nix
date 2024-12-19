@@ -1,6 +1,4 @@
 {
-  config,
-  inputs,
   pkgs,
   ...
 }:
@@ -75,6 +73,7 @@
       "1password"
       "alloy"
       "android-studio"
+      "bettermouse"
       "bruno"
       "chatgpt"
       {
@@ -90,7 +89,6 @@
       "jordanbaird-ice"
       "karabiner-elements"
       "keymapp"
-      "logi-options+"
       "meetingbar"
       "monodraw"
       "obs"
