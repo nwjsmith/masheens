@@ -31,25 +31,24 @@
     enable = true;
     interactiveShellInit = ''
       fish_vi_key_bindings
+      set -g pure_enable_git false
+      set -g pure_show_subsecond_command_duration true
+      set -g pure_threshold_command_duration 2
+      set -g pure_check_for_new_release false
+      set -g pure_color_success green
       source ${modusTheme}
     '';
-    functions = {
-      fish_greeting = "";
-      fish_mode_prompt = "";
-      fish_prompt = ''
-        if test "$status" -ne 0
-            set -f prompt_colour red
-        else
-            set -f prompt_colour green
-        end
-        if test "$CMD_DURATION" -gt 1000
-            set -f duration " took " (set_color yellow) (math --scale 2 $CMD_DURATION / 1000) "s" (set_color normal)
-        else
-            set -f duration ""
-        end
-        string join "" -- (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $duration \n (set_color $prompt_colour) "❯" (set_color normal) " "
-      '';
-    };
+    functions.fish_greeting = "";
+    plugins = [
+      {
+        inherit (pkgs.fishPlugins.pure) src;
+        name = "pure";
+      }
+      {
+        inherit (pkgs.fishPlugins.z) src;
+        name = "z";
+      }
+    ];
   };
 
   imports = [
@@ -122,8 +121,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
-  programs.zoxide.enable = true;
 
   programs.eza = {
     enable = true;
