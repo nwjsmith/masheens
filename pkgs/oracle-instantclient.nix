@@ -6,8 +6,6 @@
   _7zz,
   ...
 }:
-let
-in
 stdenv.mkDerivation {
   pname = "oracle-instantclient";
   version = "23.3.0.23.09";

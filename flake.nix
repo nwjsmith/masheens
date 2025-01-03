@@ -4,23 +4,12 @@
   inputs = {
     agenix.url = "github:ryantm/agenix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs = {
-        nixpkgs-stable.follows = "nixpkgs";
-        nixpkgs-unstable.follows = "nixpkgs";
-      };
-    };
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
-    nixcasks = {
-      url = "github:jacekszymanski/nixcasks";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
@@ -34,10 +23,8 @@
     {
       agenix,
       determinate,
-      ghostty,
       nixpkgs,
       nix-darwin,
-      nixcasks,
       nixvim,
       home-manager,
       ...
@@ -89,7 +76,6 @@
             overlays = [
               (final: prev: {
                 agenix = agenix.packages.${system}.default;
-                ghostty = ghostty.packages.${system}.default;
               })
             ];
           };
