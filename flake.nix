@@ -11,7 +11,6 @@
         nixpkgs-unstable.follows = "nixpkgs";
       };
     };
-    ghostty-hm.url = "github:clo4/ghostty-hm-module";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -36,7 +35,6 @@
       agenix,
       determinate,
       ghostty,
-      ghostty-hm,
       nixpkgs,
       nix-darwin,
       nixcasks,
@@ -115,7 +113,6 @@
                   {
                     imports = [
                       agenix.homeManagerModules.default
-                      ghostty-hm.homeModules.default
                       nixvim.homeManagerModules.nixvim
                       ./common/home-configuration.nix
                       ./${os}/home-configuration.nix
