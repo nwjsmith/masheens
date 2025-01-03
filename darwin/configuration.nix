@@ -95,6 +95,7 @@
       "obs"
       "obsidian"
       "ollama"
+      "omnifocus"
       "utm"
       "raindropio"
       "raycast"
