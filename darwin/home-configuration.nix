@@ -30,7 +30,7 @@
     font-feature = -calt
     font-size = 16
     foreground = #000000
-    macos-titlebar-style = tabs
+    macos-option-as-alt = true
     palette = 0=#000000
     palette = 8=#595959
     palette = 1=#a60000

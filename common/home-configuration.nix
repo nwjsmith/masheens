@@ -31,6 +31,7 @@
     enable = true;
     interactiveShellInit = ''
       fish_vi_key_bindings
+      set -g fish_last_login ""
       set -g pure_enable_git false
       set -g pure_show_subsecond_command_duration true
       set -g pure_threshold_command_duration 2
@@ -81,6 +82,11 @@
     EDITOR = "nvim";
     VISUAL = "zed --wait";
     MANPAGER = "nvim +Man!";
+  };
+
+  programs.helix = {
+    enable = true;
+    settings.theme = "modus_operandi";
   };
 
   programs.jujutsu = {
