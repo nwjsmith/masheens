@@ -104,7 +104,6 @@
       "soulver"
       "spotify"
       "the-unarchiver"
-      "todoist"
       "tuple"
       "zed"
     ];

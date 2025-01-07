@@ -15,7 +15,6 @@
     obsidian
     racket
     spotify
-    todoist-electron
     tlaplusToolbox
     ulauncher
     vlc
