@@ -110,7 +110,6 @@
     masApps = {
       "1Password for Safari" = 1569813296;
       "Kindle" = 302584613;
-      "Things" = 904280696;
     };
   };
 }
