@@ -45,10 +45,6 @@
         inherit (pkgs.fishPlugins.pure) src;
         name = "pure";
       }
-      {
-        inherit (pkgs.fishPlugins.z) src;
-        name = "z";
-      }
     ];
   };
 
@@ -79,28 +75,26 @@
 
   home.sessionVariables = {
     PAGER = "less -FR";
-    EDITOR = "nvim";
     VISUAL = "zed --wait";
     MANPAGER = "nvim +Man!";
   };
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings.theme = "modus_operandi";
   };
 
   programs.jujutsu = {
     enable = true;
     settings = {
-      aliases = {
-        sync = [
-          "rebase"
-          "--source"
-          "all:roots(trunk()..@)"
-          "--destination"
-          "trunk()"
-        ];
-      };
+      aliases.sync = [
+        "rebase"
+        "--source"
+        "all:roots(trunk()..@)"
+        "--destination"
+        "trunk()"
+      ];
       signing = {
         backend = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtWR1nXAvSmsd92TC9rMuZIh1Ec8cqxYr3BIyUxdNyy";
@@ -194,4 +188,6 @@
 
   programs.yazi.enable = true;
   programs.yt-dlp.enable = true;
+
+  programs.zoxide.enable = true;
 }

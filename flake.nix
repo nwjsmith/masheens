@@ -10,13 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager.url = "github:nix-community/home-manager";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nix-darwin.follows = "nix-darwin";
-        home-manager.follows = "home-manager";
-      };
-    };
   };
 
   outputs =
@@ -25,7 +18,6 @@
       determinate,
       nixpkgs,
       nix-darwin,
-      nixvim,
       home-manager,
       ...
     }@inputs:
@@ -99,7 +91,6 @@
                   {
                     imports = [
                       agenix.homeManagerModules.default
-                      nixvim.homeManagerModules.nixvim
                       ./common/home-configuration.nix
                       ./${os}/home-configuration.nix
                       ./${host}/home-configuration.nix

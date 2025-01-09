@@ -5,9 +5,4 @@
     git
     neovim
   ];
-
-  environment.variables = {
-    EDITOR = "vim";
-    MANWIDTH = "999";
-  };
 }
