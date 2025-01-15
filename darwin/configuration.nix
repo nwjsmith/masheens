@@ -80,6 +80,7 @@
         name = "chromium";
         args.no_quarantine = true;
       }
+      "cursor"
       "cleanshot"
       "dash"
       "deckset"
