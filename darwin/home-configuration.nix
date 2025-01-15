@@ -23,32 +23,29 @@
   };
 
   home.file."${config.xdg.configHome}/ghostty/config".text = ''
-    background = #ffffff
-    cursor-color = #000000
-    cursor-text = #ffffff
+    background = #000000
+    foreground = #ffffff
+    palette = 0=#000000
+    palette = 1=#ff5f59
+    palette = 2=#44bc44
+    palette = 3=#d0bc00
+    palette = 4=#2fafff
+    palette = 5=#feacd0
+    palette = 6=#00d3d0
+    palette = 7=#ffffff
+    palette = 8=#1e1e1e
+    palette = 9=#ff5f5f
+    palette = 10=#44df44
+    palette = 11=#efef00
+    palette = 12=#338fff
+    palette = 13=#ff66ff
+    palette = 14=#00eff0
+    palette = 15=#989898
+
     font-family = JetBrains Mono
     font-feature = -calt
-    font-size = 16
-    foreground = #000000
+    font-size = 15
     macos-option-as-alt = true
-    palette = 0=#000000
-    palette = 8=#595959
-    palette = 1=#a60000
-    palette = 9=#972500
-    palette = 2=#006800
-    palette = 10=#00663f
-    palette = 3=#6f5500
-    palette = 11=#884900
-    palette = 4=#0031a9
-    palette = 12=#3548cf
-    palette = 5=#721045
-    palette = 13=#531ab6
-    palette = 6=#005e8b
-    palette = 14=#005f5f
-    palette = 7=#a6a6a6
-    palette = 15=#ffffff
-    selection-background = #bdbdbd
-    selection-foreground = #000000
   '';
 
   home.sessionPath = [

@@ -9,7 +9,7 @@
     userName = "Nate Smith";
     delta = {
       enable = true;
-      options.syntax-theme = "modus_operandi";
+      options.syntax-theme = "modus_vivendi";
     };
     aliases = {
       co = "checkout";
