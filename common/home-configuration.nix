@@ -156,6 +156,9 @@
       ]
     );
   };
+  xdg.configFile."doom/init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/init.el";
+  xdg.configFile."doom/config.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/config.el";
+  xdg.configFile."doom/packages.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/packages.el";
 
   home.file.".psqlrc".source = ./psqlrc;
 
