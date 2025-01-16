@@ -86,7 +86,6 @@
       "deckset"
       "discord"
       "firefox"
-      "ghostty"
       "intellij-idea"
       "jordanbaird-ice"
       "karabiner-elements"

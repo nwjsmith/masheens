@@ -9,6 +9,10 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager.url = "github:nix-community/home-manager";
   };
 
@@ -19,6 +23,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      nur,
       ...
     }@inputs:
     let
@@ -69,6 +74,7 @@
               (final: prev: {
                 agenix = agenix.packages.${system}.default;
               })
+              nur.overlays.default
             ];
           };
 
