@@ -8,7 +8,6 @@
     ];
     extraLuaConfig = ''
       vim.cmd([[colorscheme modus]])
-      vim.o.background = "dark"
     '';
   };
 }

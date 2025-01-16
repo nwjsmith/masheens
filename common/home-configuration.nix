@@ -24,8 +24,8 @@
 
   programs.fish = let
     modusTheme = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/miikanissi/modus-themes.nvim/35980f19daef4745c96f1cb292d484fb1f33f822/extras/fish/modus_vivendi.fish";
-      sha256 = "sha256:08hqxzchghf3k8rjfi2nnklh74m5ws4qkagixvnbvyqvgj7d4nn2";
+      url = "https://raw.githubusercontent.com/miikanissi/modus-themes.nvim/35980f19daef4745c96f1cb292d484fb1f33f822/extras/fish/modus_operandi.fish";
+      sha256 = "sha256:0l3k2jkv2gd4mwbnpq2mq13hrb67wdk7mkq37z58lxl861zpmabq";
     };
   in {
     enable = true;
@@ -82,7 +82,7 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    settings.theme = "modus_vivendi";
+    settings.theme = "modus_operandi";
   };
 
   programs.jujutsu = {
@@ -130,15 +130,15 @@
 
   programs.bat = {
     enable = true;
-    config.theme = "modus_vivendi";
-    themes.modus_vivendi = {
+    config.theme = "modus_operandi";
+    themes.modus_operandi = {
       src = pkgs.fetchFromGitHub {
         owner = "miikanissi";
         repo = "modus-themes.nvim";
         rev = "7ba45f2";
         sha256 = "sha256-pLjQhhxifUY0ibU82bRd6qSNMYwtNZitFSbcOmO18JQ=";
       };
-      file = "extras/bat/modus_vivendi.tmTheme";
+      file = "extras/bat/modus_operandi.tmTheme";
     };
   };
 
@@ -165,18 +165,19 @@
   programs.fzf = {
     enable = true;
     colors = {
-      bg = "#282828";
-      "bg+" = "#3c3836";
-      "fg" = "#bdae93";
-      "fg+" = "#ebdbb2";
-      spinner = "#8ec07c";
-      hl = "#83a598";
-      header = "#83a598";
-      info = "#fabd2f";
-      pointer = "#8ec07c";
-      marker = "#8ec07c";
-      prompt = "#fabd2f";
-      "hl+" = "#83a598";
+      fg = "#000000";
+      bg = "#ffffff";
+      hl = "#0031a9";
+      "fg+" = "#000000";
+      "bg+" = "#c4c4c4";
+      "hl+" = "#0031a9";
+      border = "#9f9f9f";
+      header = "#193668";
+      spinner = "#005e8b";
+      info = "#005e8b";
+      pointer = "#a60000";
+      marker = "#a60000";
+      prompt = "#0031a9";
     };
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     defaultCommand = "${pkgs.fd}/bin/fd --type f";

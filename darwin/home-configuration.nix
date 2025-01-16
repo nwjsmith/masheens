@@ -31,38 +31,40 @@
       font-feature = "-calt";
       font-size = 15;
 
-      background = "#000000";
-      cursor-color = "#ffffff";
-      cursor-text = "#000000";
-      foreground = "#ffffff";
+      macos-option-as-alt = true;
+
+      background = "#ffffff";
+      cursor-color = "#000000";
+      cursor-text = "#ffffff";
+      foreground = "#000000";
       palette = [
         # black
         "0=#000000"
         "8=#595959"
         # red
-        "1=#ff5f59"
-        "9=#ff7f9f"
+        "1=#a60000"
+        "9=#972500"
         # green
-        "2=#44bc44"
-        "10=#70b900"
+        "2=#006800"
+        "10=#00663f"
         # yellow
-        "3=#d0bc00"
-        "11=#fec43f"
+        "3=#6f5500"
+        "11=#884900"
         # blue
-        "4=#2fafff"
-        "12=#79a8ff"
+        "4=#0031a9"
+        "12=#3548cf"
         # purple
-        "5=#feacd0"
-        "13=#b6a0ff"
+        "5=#721045"
+        "13=#531ab6"
         # aqua
-        "6=#00d3d0"
-        "14=#6ae4b9"
+        "6=#005e8b"
+        "14=#005f5f"
         # white
-        "7=#ffffff"
-        "15=#989898"
+        "7=#a6a6a6"
+        "15=#ffffff"
       ];
-      selection-foreground = "#ffffff";
-      selection-background = "#3c3c3c";
+      selection-foreground = "#000000";
+      selection-background = "#bdbdbd";
     };
   };
 
