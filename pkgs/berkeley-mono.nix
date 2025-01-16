@@ -9,12 +9,12 @@ stdenv.mkDerivation {
 
   src = ../secret/berkeley-mono-typeface.zip;
 
-  buildInputs = [ unzip ];
+  buildInputs = [unzip];
   phases = [
     "unpackPhase"
     "installPhase"
   ];
-  pathsToLink = [ "/share/fonts/truetype/" ];
+  pathsToLink = ["/share/fonts/truetype/"];
   sourceRoot = ".";
   installPhase = ''
     install_path=$out/share/fonts/truetype

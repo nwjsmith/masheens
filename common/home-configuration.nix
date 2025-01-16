@@ -3,16 +3,10 @@
   lib,
   pkgs,
   ...
-}:
-
-{
+}: {
   programs.home-manager.enable = true;
 
-  home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-  home.file.".local/bin/jj-colocate" = {
-    source = ./local/bin/jj-colocate;
-    executable = true;
-  };
+  home.sessionPath = ["${config.home.homeDirectory}/.local/bin"];
   home.file.".local/bin/jj-pr" = {
     source = ./local/bin/jj-pr;
     executable = true;
@@ -57,7 +51,7 @@
 
   home.packages =
     [
-      (pkgs.ripgrep.override { withPCRE2 = true; })
+      (pkgs.ripgrep.override {withPCRE2 = true;})
     ]
     ++ (with pkgs; [
       agenix
@@ -150,15 +144,19 @@
   programs.emacs = {
     enable = true;
     extraPackages = (
-      epkgs: with epkgs; [
-        treesit-grammars.with-all-grammars
-        vterm
-      ]
+      epkgs:
+        with epkgs; [
+          treesit-grammars.with-all-grammars
+          vterm
+        ]
     );
   };
-  xdg.configFile."doom/init.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/init.el";
-  xdg.configFile."doom/config.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/config.el";
-  xdg.configFile."doom/packages.el".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/packages.el";
+  xdg.configFile."doom/init.el".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/init.el";
+  xdg.configFile."doom/config.el".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/config.el";
+  xdg.configFile."doom/packages.el".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/nwjsmith/masheens/doom.d/packages.el";
 
   home.file.".psqlrc".source = ./psqlrc;
 
@@ -231,6 +229,5 @@
 
   programs.yazi.enable = true;
   programs.yt-dlp.enable = true;
-
   programs.zoxide.enable = true;
 }

@@ -8,7 +8,7 @@ Usage: $(basename "$0") <bookmark> [--dry-run]
 Merge a PR associated with a Jujutsu bookmark using GitHub CLI.
 
 Arguments:
-    bookmark        The Jujutsu bookmark to merge
+    bookmark       The Jujutsu bookmark to merge
     -h, --help     Show this help message
     --dry-run      Print commands without executing them
 EOF

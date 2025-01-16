@@ -1,10 +1,6 @@
-{
-  ...
-}:
-
-{
+{...}: {
   homebrew = {
-    taps = [ "wealthsimple/tap" ];
+    taps = ["wealthsimple/tap"];
     casks = [
       "google-chrome"
       "notion"

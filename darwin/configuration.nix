@@ -1,9 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   security.pam.enableSudoTouchIdAuth = true;
 
   environment = {

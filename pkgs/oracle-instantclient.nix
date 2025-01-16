@@ -73,7 +73,7 @@ stdenv.mkDerivation {
       OCCI, Pro*C, ODBC or JDBC). This package includes the sqlplus
       command line SQL client.
     '';
-    sourceProvenance = [ lib.sourceTypes.binaryBytecode ];
-    platforms = [ "aarch64-darwin" ];
+    sourceProvenance = [lib.sourceTypes.binaryBytecode];
+    platforms = ["aarch64-darwin"];
   };
 }

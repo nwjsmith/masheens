@@ -1,8 +1,4 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   programs.git = {
     enable = true;
     userEmail = "nate@theinternate.com";

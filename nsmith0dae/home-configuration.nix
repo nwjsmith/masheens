@@ -1,15 +1,23 @@
 {
+  config,
   pkgs,
   ...
-}:
-
-{
+}: {
   home.stateVersion = "22.05";
 
-  imports = [
-    ./git.nix
-    ./zsh.nix
-  ];
+  xdg.configFile."git/wealthsimple.gitconfig".text = ''
+    [user]
+    email = nsmith@wealthsimple.com
+  '';
+
+  programs.git = {
+    includes = [
+      {
+        path = "${config.xdg.configHome}/git/wealthsimple.gitconfig";
+        condition = "gitdir:~/Code/wealthsimple/";
+      }
+    ];
+  };
 
   home.packages = with pkgs; [
     amazon-ecr-credential-helper
@@ -18,8 +26,5 @@
     docker-compose
     docker-credential-helpers
     nodePackages.mermaid-cli
-    libyaml
   ];
-
-  programs.mise.enable = true;
 }

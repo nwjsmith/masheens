@@ -1,13 +1,6 @@
-{
-  inputs,
-  ...
-}:
-
-{
+{inputs, ...}: {
   boot.loader = {
-    systemd-boot = {
-      enable = true;
-    };
+    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
 
@@ -22,7 +15,7 @@
       "nix-command"
       "flakes"
     ];
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
   services.openssh = {
@@ -37,7 +30,7 @@
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = [ "*" ];
+      ids = ["*"];
       settings.main.capslock = "overload(control, esc)";
     };
   };

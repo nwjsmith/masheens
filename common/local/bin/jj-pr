@@ -11,8 +11,8 @@ usage() {
     echo "If no revision is specified, @ is used."
     echo
     echo "Options:"
-    echo "  -h, --help     Show this help message"
-    echo "  -n, --dry-run  Dry run (print changes without updating PR)"
+    echo "  -h, --help       Show this help message"
+    echo "  -n, --dry-run    Dry run (print changes without updating PR)"
     echo "      --no-create  Don't create PR if none exists"
     echo "      --no-draft   Don't create PR as draft"
     exit "${1:-0}"
